@@ -8,7 +8,7 @@ This base project includes registration and authentication using passport.
 
 1. Read all steps before starting
 2. Select the desired branch (mongo or sql) from the dropdown above
-3. Click the green 'Clone or Download' and click on 'Download Zip'
+3. Click the green 'Clone or Download' button and click on 'Download Zip'
 4. Double click the zip file in your downloads folder to extract the contents
 5. Move the folder to the desired location on your computer
 6. Rename the folder to match your project name
