@@ -23,3 +23,17 @@ git commit -m "Base project with registration and authentication."
 git remote add origin YOUR_GITHUB_PROJECT_URL
 git push -u origin masters
 ```
+
+## Solo Project Resources
+- [Scope Template](https://docs.google.com/a/primeacademy.io/document/d/10dqhI--GpNWi0xbY2wt5Uy51mY7HKO-uTY5fc4xoBrs/edit?usp=sharing)
+- [Scope Examples](https://drive.google.com/drive/folders/0B13zFCnqgksYS2Q5WmVFTU5jN3M?usp=sharing)
+- [Common Solo Project Technologies](https://docs.google.com/document/d/1W3VgPf0uh5pcak1hthdx-yHFQbqHji3fpBykw9N1DY0/)
+
+## Wireframe or mockup options:
+
+- https://balsamiq.com/
+- https://www.sketchapp.com/
+- https://wireframe.cc/
+- https://www.axure.com/ (Very complex tool, might be more work to learn than worth)
+- https://realtimeboard.com/cases/
+- https://www.uxpin.com/
