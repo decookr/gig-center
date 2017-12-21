@@ -1,31 +1,36 @@
 myApp.service('GigService', ['$http', '$location', function($http, $location, GigService, UserService){
     
-    var self = this; //this self refers to service, not something else in project
+    var self = this;
 
-//     // self.hero = { list: [] };  //empty array for companies to go into, use object
+    self.gigs = { list: [] };  //empty array for gigs to go into, use object
 
-//     // self.getHero = function () {
-//     //     $http({
-//     //         method: 'GET',
-//     //         url: '/hero/all',
-//     //     }).then(function (response) {
-//     //         console.log('response', response.data); ///response.data will just send back the array of objects, not all the extra info
-//     //         self.hero.list = response.data;
-//     //     });
-//     // };
+    self.getGigs = function () {
+        $http({
+            method: 'GET',
+            url: '/gigs/',
+        }).then(function (response) {
+            console.log('response', response.data); ///response.data will just send back the array of objects, not all the extra info
+            self.gigs.list = response.data;
+        });
+    };
 
-//     // self.addNewHero = function (newHero) {
-//     //     $http({
-//     //         method: 'POST',
-//     //         url: '/hero/all',
-//     //         data: newHero,
-//     //     }).then(function (response) {
-//     //         console.log('response', response);
-//     //         self.getHero();
-//     //         newHero.name='',
-//     //         newHero.backstory='';
-//     //     });
-//     // }
+    self.addGig = function (newGig) {
+        $http({
+            method: 'POST',
+            url: '/gigs/',
+            data: newGig,
+        }).then(function (response) {
+            console.log('response', response);
+            self.getGigs();
+            newGig.date='',
+            newGig.location='',
+            newGig.start_time='',
+            newGig.end_time='',
+            newGig.load_time='',
+            newGig.gig_song_id='',
+            newGig.details=''
+        });
+    }
 
 //     // self.deleteHero = function (heroToDelete) {
 //     //     console.log(heroToDelete);
