@@ -1,0 +1,10 @@
+<div ng-include="'views/partials/nav.html'"></div>
+<div class="container">
+    <h2>Users</h2>
+    {{uc.users.list}}
+  <ul ng-repeat="user in uc.users.list">
+    <li>
+        {{user.username}} {{user.first_name}} {{user.last_name}} 
+  </li>
+  </ul>
+</div>

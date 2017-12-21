@@ -3,4 +3,6 @@ myApp.controller('UserController', function(UserService) {
   var vm = this;
   vm.userService = UserService;
   vm.userObject = UserService.userObject;
+  UserService.getAllUsers();
+  vm.users = UserService.users;
 });

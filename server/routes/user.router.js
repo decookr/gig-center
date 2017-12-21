@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var pool = require('../modules/pool');
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {
@@ -26,6 +27,27 @@ router.get('/logout', function(req, res) {
   console.log('Logged out');
   req.logOut();
   res.sendStatus(200);
+});
+
+router.get('/all', function (req, res) {
+  console.log('got some users');
+  
+  pool.connect(function (errorConnectingToDatabase, client, done) {
+      if (errorConnectingToDatabase) {
+          console.log('error', errorConnectingToDatabase);
+          res.sendStatus(500);
+      } else {
+          client.query('SELECT * from users', function (errorMakingDatabaseQuery, result) {
+              done();
+              if (errorMakingDatabaseQuery) {
+                  console.log('error', errorMakingDatabaseQuery);
+                  res.sendStatus(500);
+              } else {
+                  res.send(result.rows);
+              }
+          });
+      }
+  });
 });
 
 
