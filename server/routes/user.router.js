@@ -29,15 +29,14 @@ router.get('/logout', function(req, res) {
   res.sendStatus(200);
 });
 
-router.get('/all', function (req, res) {
-  console.log('got some users');
-  
+//gets a list of all users to display on User List view
+router.get('/all', function (req, res) {  
   pool.connect(function (errorConnectingToDatabase, client, done) {
       if (errorConnectingToDatabase) {
           console.log('error', errorConnectingToDatabase);
           res.sendStatus(500);
       } else {
-          client.query('SELECT * from users', function (errorMakingDatabaseQuery, result) {
+          client.query('SELECT * from users ORDER BY first_name', function (errorMakingDatabaseQuery, result) {
               done();
               if (errorMakingDatabaseQuery) {
                   console.log('error', errorMakingDatabaseQuery);

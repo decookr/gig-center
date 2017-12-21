@@ -1,10 +1,36 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
-    <h2>Users</h2>
-    {{uc.users.list}}
-  <ul ng-repeat="user in uc.users.list">
-    <li>
-        {{user.username}} {{user.first_name}} {{user.last_name}} 
-  </li>
-  </ul>
+    <div class="container user">
+        <h2>Users</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in uc.users.list">
+                    <td>
+                        {{user.first_name}}
+                    </td>
+                    <td>
+                        {{user.last_name}}
+                    </td>
+                    <td>
+                        {{user.username}}
+                    </td>
+                    <!-- button placeholders -->
+                    <td>
+                        <button ng-click="vm.deleteHero(hero)">Edit</button>
+                    </td>
+                    <td>
+                        <button ng-click="vm.deleteHero(hero)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="#register"><button class="btn btn-default">Add New User</button></a> 
+    </div>
 </div>

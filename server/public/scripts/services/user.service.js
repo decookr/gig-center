@@ -29,18 +29,16 @@ myApp.service('UserService', function ($http, $location) {
         $location.path("/home");
       });
     }
-
+    
+//gets a list of all users to display on User List view
   self.getAllUsers = function () {
     $http({
       method: 'GET',
       url: '/user/all',
     }).then(function (response) {
-      self.users.list = response.data;
-      console.log('all users', response.data);
-      
+      self.users.list = response.data;      
     });
   };
 
 });
 
-//gets a list of all users to display on User List view
