@@ -1,39 +1,39 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
-    <!-- <div>
+    <div>
         <h2>Add Song</h2>
-        <form ng-submit="gc.addGig(gc.gigs)">
+        <form ng-submit="sc.addSong(sc.songs)">
             <div>
-                <label for="date">Date</label>
-                <input type="date" ng-model="gc.gigs.date" />
+                <label for="title">Title</label>
+                <input type="text" ng-model="sc.songs.title" />
             </div>
             <div>
-                <label for="location">Location</label>
-                <input type="text" ng-model="gc.gigs.location" />
+                <label for="artist">Artist</label>
+                <input type="text" ng-model="sc.songs.artist" />
             </div>
             <div>
-                <label for="start_time">Start Time</label>
-                <input type="time" ng-model="gc.gigs.start_time" />
+                <label for="length">Length</label>
+                <input type="text" ng-model="sc.songs.length" />
             </div>
             <div>
-                <label for="end_time">End Time</label>
-                <input type="time" ng-model="gc.gigs.end_time" />
+                <label for="bpm">BPM</label>
+                <input type="number" ng-model="sc.songs.bpm" />
             </div>
             <div>
-                <label for="load_time">Load-In Time</label>
-                <input type="time" ng-model="gc.gigs.load_time" />
+                <label for="key">Key</label>
+                <input type="text" ng-model="sc.songs.key" />
             </div>
             <div>
-                <label for="song_list">Song List</label>
-                <input type="text" ng-model="gc.gigs.gig_song_id" />
+                <label for="recording_url">Recording Link</label>
+                <input type="text" ng-model="sc.songs.recording_url" />
             </div>
             <div>
-                <label for="details">Details</label>
-                <input type="text" ng-model="gc.gigs.details" />
+                <label for="pdf_url">PDF</label>
+                <input type="text" ng-model="sc.songs.pdf_url" />
             </div>
-            <input class="btn btn-default" type="submit" name="submit" value="Add Gig" />
+            <input class="btn btn-default" type="submit" name="submit" value="Add Song" />
         </form>
-    </div> -->
+    </div>
     <div>
         <h2>Song List</h2>
         <table class="table table-striped">

@@ -21,29 +21,29 @@ router.get('/', function (req, res) {
     });
 });
 
-// router.post('/', function (req, res) {
-//     // console.log(req);
+router.post('/', function (req, res) {
+    // console.log(req);
     
-//     var gig = req.body;
-//     pool.connect(function(errorConnectingToDatabase, client, done){
-//         if(errorConnectingToDatabase){
-//             console.log('Error connecting to database', errorConnectingToDatabase);
-//             res.sendStatus(500);
-//         } else {
-//             client.query(`INSERT INTO gig (date, location, start_time, end_time, load_time, gig_song_id, details)
-//             VALUES ($1, $2, $3, $4, $5, $6, $7);`, [gig.date, gig.location, gig.start_time, gig.end_time, gig.load_time, gig.gig_song_id, gig.details ], 
-//             function(errorMakingQuery, result){
-//                 done();
-//                 if(errorMakingQuery){
-//                     console.log('Error making query', errorMakingQuery);
-//                     res.sendStatus(500);
-//                 } else{
-//                     res.sendStatus(201); 
-//                 }
-//             });
-//         }
-//     });
-// })
+    var song = req.body;
+    pool.connect(function(errorConnectingToDatabase, client, done){
+        if(errorConnectingToDatabase){
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`INSERT INTO song (title, artist, length, bpm, key, recording_url, pdf_url)
+            VALUES ($1, $2, $3, $4, $5, $6, $7);`, [song.title, song.artist, song.length, song.bpm, song.key, song.recoring_url, song.pdf_url ], 
+            function(errorMakingQuery, result){
+                done();
+                if(errorMakingQuery){
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else{
+                    res.sendStatus(201); 
+                }
+            });
+        }
+    });
+})
 
 
 // router.delete('/:id', function (req,res){

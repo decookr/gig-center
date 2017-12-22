@@ -5,5 +5,5 @@ myApp.controller('SongController', function (SongService) {
     // vm.userService = UserService;
     vm.songs = SongService.songs;
     SongService.getSongs();
-    // vm.addGig = GigService.addGig;
+    vm.addSong = SongService.addSong;
 });

@@ -14,22 +14,22 @@ myApp.service('SongService', ['$http', '$location', function ($http, $location, 
         });
     };
 
-    // self.addGig = function (newGig) {
-    //     $http({
-    //         method: 'POST',
-    //         url: '/gigs/',
-    //         data: newGig,
-    //     }).then(function (response) {
-    //         self.getGigs();
-    //         newGig.date='',
-    //         newGig.location='',
-    //         newGig.start_time='',
-    //         newGig.end_time='',
-    //         newGig.load_time='',
-    //         newGig.gig_song_id='',
-    //         newGig.details=''
-    //     });
-    // }
+    self.addSong = function (newSong) {
+        $http({
+            method: 'POST',
+            url: '/songs/',
+            data: newSong
+        }).then(function (response) {
+            self.getSongs();
+            newSong.title='',
+            newSong.artist='',
+            newSong.length='',
+            newSong.bpm='',
+            newSong.key='',
+            newSong.recording_url='',
+            newSong.pdf_url=''
+        });
+    }
 
 //     // self.deleteHero = function (heroToDelete) {
 //     //     console.log(heroToDelete);
