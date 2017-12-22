@@ -80,5 +80,6 @@ li a:hover {
 }
 
 .container .user {
-  width: 600px;
+  padding-right: 400px;
+  /* width: 700px; */
 }

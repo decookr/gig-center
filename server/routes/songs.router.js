@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
             console.log('error', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query('SELECT * FROM gig ORDER BY date', function (errorMakingDatabaseQuery, result) {
+            client.query('SELECT * FROM song ORDER BY title', function (errorMakingDatabaseQuery, result) {
                 done();
                 if (errorMakingDatabaseQuery) {
                     console.log('error', errorMakingDatabaseQuery);
@@ -21,29 +21,29 @@ router.get('/', function (req, res) {
     });
 });
 
-router.post('/', function (req, res) {
-    // console.log(req);
+// router.post('/', function (req, res) {
+//     // console.log(req);
     
-    var gig = req.body;
-    pool.connect(function(errorConnectingToDatabase, client, done){
-        if(errorConnectingToDatabase){
-            console.log('Error connecting to database', errorConnectingToDatabase);
-            res.sendStatus(500);
-        } else {
-            client.query(`INSERT INTO gig (date, location, start_time, end_time, load_time, gig_song_id, details)
-            VALUES ($1, $2, $3, $4, $5, $6, $7);`, [gig.date, gig.location, gig.start_time, gig.end_time, gig.load_time, gig.gig_song_id, gig.details ], 
-            function(errorMakingQuery, result){
-                done();
-                if(errorMakingQuery){
-                    console.log('Error making query', errorMakingQuery);
-                    res.sendStatus(500);
-                } else{
-                    res.sendStatus(201); 
-                }
-            });
-        }
-    });
-})
+//     var gig = req.body;
+//     pool.connect(function(errorConnectingToDatabase, client, done){
+//         if(errorConnectingToDatabase){
+//             console.log('Error connecting to database', errorConnectingToDatabase);
+//             res.sendStatus(500);
+//         } else {
+//             client.query(`INSERT INTO gig (date, location, start_time, end_time, load_time, gig_song_id, details)
+//             VALUES ($1, $2, $3, $4, $5, $6, $7);`, [gig.date, gig.location, gig.start_time, gig.end_time, gig.load_time, gig.gig_song_id, gig.details ], 
+//             function(errorMakingQuery, result){
+//                 done();
+//                 if(errorMakingQuery){
+//                     console.log('Error making query', errorMakingQuery);
+//                     res.sendStatus(500);
+//                 } else{
+//                     res.sendStatus(201); 
+//                 }
+//             });
+//         }
+//     });
+// })
 
 
 // router.delete('/:id', function (req,res){

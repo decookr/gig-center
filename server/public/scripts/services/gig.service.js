@@ -15,21 +15,19 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
     };
 
     self.addGig = function (newGig) {
-        console.log(newGig);
         $http({
             method: 'POST',
             url: '/gigs/',
             data: newGig,
         }).then(function (response) {
-            console.log('response', response);
             self.getGigs();
-            // newGig.date='',
-            // newGig.location='',
-            // newGig.start_time='',
-            // newGig.end_time='',
-            // newGig.load_time='',
-            // newGig.gig_song_id='',
-            // newGig.details=''
+            newGig.date='',
+            newGig.location='',
+            newGig.start_time='',
+            newGig.end_time='',
+            newGig.load_time='',
+            newGig.gig_song_id='',
+            newGig.details=''
         });
     }
 

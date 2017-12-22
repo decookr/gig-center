@@ -1,7 +1,7 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
-    <div>
-        <h2>Add Gig</h2>
+    <!-- <div>
+        <h2>Add Song</h2>
         <form ng-submit="gc.addGig(gc.gigs)">
             <div>
                 <label for="date">Date</label>
@@ -33,43 +33,43 @@
             </div>
             <input class="btn btn-default" type="submit" name="submit" value="Add Gig" />
         </form>
-    </div>
+    </div> -->
     <div>
-        <h2>Gig List</h2>
+        <h2>Song List</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Location</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Load-In Time</th>
-                    <th>Song List Number</th>
-                    <th>Details</th>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Length</th>
+                    <th>BPM</th>
+                    <th>Key</th>
+                    <th>Play</th>
+                    <th>PDF</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="gig in gc.gigs.list">
+                <tr ng-repeat="song in sc.songs.list">
                     <td>
-                        {{gig.date | date :  "MM/dd/y" }}
+                        {{song.title}}
                     </td>
                     <td>
-                        {{gig.location}}
+                        {{song.artist}}
                     </td>
                     <td>
-                        {{gig.start_time | date : "h:mma"}}
+                        {{song.length}}
                     </td>
                     <td>
-                        {{gig.end_time | date : "h:mma"}}
+                        {{song.bpm}}
                     </td>
                     <td>
-                        {{gig.load_time | date : "h:mma"}}
+                        {{song.key}}
                     </td>
                     <td>
-                        {{gig.gig_song_id}}
+                        {{song.recording_url}}
                     </td>
                     <td>
-                        {{gig.details}}
+                        {{song.pdf_url}}
                     </td>
                     <!-- button placeholders -->
                     <td>

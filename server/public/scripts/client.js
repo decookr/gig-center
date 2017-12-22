@@ -49,6 +49,15 @@ myApp.config(function($routeProvider, $locationProvider) {
         }
       }
     })
+    .when('/songs', {
+      templateUrl: '/views/templates/songs.html',
+      controller: 'SongController as sc',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
     .otherwise({
       redirectTo: 'home'
     });
