@@ -1,4 +1,4 @@
-myApp.service('GigService', ['$http', '$location', function($http, $location, GigService, UserService){
+myApp.service('GigService', ['$http', '$location', function ($http, $location, GigService){
     
     var self = this;
 
@@ -15,6 +15,7 @@ myApp.service('GigService', ['$http', '$location', function($http, $location, Gi
     };
 
     self.addGig = function (newGig) {
+        console.log(newGig);
         $http({
             method: 'POST',
             url: '/gigs/',
@@ -22,13 +23,13 @@ myApp.service('GigService', ['$http', '$location', function($http, $location, Gi
         }).then(function (response) {
             console.log('response', response);
             self.getGigs();
-            newGig.date='',
-            newGig.location='',
-            newGig.start_time='',
-            newGig.end_time='',
-            newGig.load_time='',
-            newGig.gig_song_id='',
-            newGig.details=''
+            // newGig.date='',
+            // newGig.location='',
+            // newGig.start_time='',
+            // newGig.end_time='',
+            // newGig.load_time='',
+            // newGig.gig_song_id='',
+            // newGig.details=''
         });
     }
 

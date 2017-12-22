@@ -22,7 +22,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req,res){
-    console.log(req);
+    // console.log(req);
     
     var gig = req.body;
     pool.connect(function(errorConnectingToDatabase, client, done){
