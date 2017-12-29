@@ -1,4 +1,4 @@
-myApp.controller('GigController', function (GigService, UserService) {
+myApp.controller('GigController', ['GigService', 'UserService', function (GigService, UserService) {
     console.log('GigController loaded');
     
     var vm = this;
@@ -6,4 +6,5 @@ myApp.controller('GigController', function (GigService, UserService) {
     vm.gigs = GigService.gigs;
     GigService.getGigs();
     vm.addGig = GigService.addGig;
-});
+    vm.users = UserService.users;
+}]);
