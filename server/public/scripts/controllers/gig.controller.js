@@ -7,4 +7,5 @@ myApp.controller('GigController', ['GigService', 'UserService', function (GigSer
     GigService.getGigs();
     vm.addGig = GigService.addGig;
     vm.users = UserService.users;
+    vm.deleteGig = GigService.deleteGig;
 }]);

@@ -15,6 +15,8 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
     };
 
     self.addGig = function (newGig) {
+        console.log(newGig);
+        
         $http({
             method: 'POST',
             url: '/gigs/',
@@ -31,15 +33,12 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
         });
     }
 
-//     // self.deleteHero = function (heroToDelete) {
-//     //     console.log(heroToDelete);
-//     //     $http({
-//     //         method: 'DELETE',
-//     //         url: '/hero/' + heroToDelete.id,
-//     //     }).then(function (response) {
-//     //         console.log('response', response);
-//     //         self.getHero();
-//     //     });
-//     // };
-
+    self.deleteGig = function (gigToDelete) {
+        $http({
+            method: 'DELETE',
+            url: '/gigs/' + gigToDelete.id,
+        }).then(function (response) {
+            self.getGigs();
+        });
+    };
 }]);
