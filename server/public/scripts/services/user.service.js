@@ -41,8 +41,6 @@ myApp.service('UserService', function ($http, $location) {
   };
 
   self.deleteUser = function (userToDelete) {
-    console.log(userToDelete);
-    
     $http({
       method: 'DELETE',
       url: '/user/' + userToDelete.id,
@@ -50,6 +48,18 @@ myApp.service('UserService', function ($http, $location) {
       self.getAllUsers();
     });
   };
+
+  self.editUser = function (userToEdit) {
+    console.log(userToEdit);
+    $http({
+      method: 'PUT',
+      url: '/user/',
+      data: userToEdit,
+    }).then(function (response) {
+      console.log('response', response);
+      self.getAllUsers();
+    });
+  }
 
 });
 

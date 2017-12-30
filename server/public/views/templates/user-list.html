@@ -13,17 +13,22 @@
             <tbody>
                 <tr ng-repeat="user in uc.users.list">
                     <td>
-                        {{user.first_name}}
+                      <span ng-hide="user.isEditable">{{user.first_name}}</span>
+                      <input ng-show="user.isEditable" type="text" ng-model="user.first_name">
                     </td>
                     <td>
-                        {{user.last_name}}
+                        <span ng-hide="user.isEditable">{{user.last_name}}</span>
+                        <input ng-show="user.isEditable" type="text" ng-model="user.last_name">
                     </td>
                     <td>
-                        {{user.username}}
+                        <span ng-hide="user.isEditable">{{user.username}}</span>
+                        <input ng-show="user.isEditable" type="text" ng-model="user.username">
                     </td>
-                    <!-- button placeholders -->
                     <td>
-                        <button ng-click="vm.deleteHero(hero)">Edit</button>
+                      <button ng-hide="user.isEditable" ng-click="user.isEditable = !user.isEditable">Edit</button>
+                    </td>
+                    <td>
+                        <button ng-show="user.isEditable" ng-click="uc.editUser(user)">Save</button>
                     </td>
                     <td>
                         <button ng-click="uc.deleteUser(user)">Delete</button>
