@@ -2,7 +2,7 @@ myApp.service('UserService', function ($http, $location) {
   console.log('UserService Loaded');
   var self = this;
   self.userObject = {};
-  self.users = { list:[] };
+  self.users = { list: [] };
 
   self.getuser = function () {
     console.log('UserService -- getuser');
@@ -29,14 +29,25 @@ myApp.service('UserService', function ($http, $location) {
         $location.path("/home");
       });
     }
-    
-//gets a list of all users to display on User List view
+
+  //gets a list of all users to display on User List view
   self.getAllUsers = function () {
     $http({
       method: 'GET',
       url: '/user/all',
     }).then(function (response) {
-      self.users.list = response.data;      
+      self.users.list = response.data;
+    });
+  };
+
+  self.deleteUser = function (userToDelete) {
+    console.log(userToDelete);
+    
+    $http({
+      method: 'DELETE',
+      url: '/user/' + userToDelete.id,
+    }).then(function (response) {
+      self.getAllUsers();
     });
   };
 

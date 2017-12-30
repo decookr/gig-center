@@ -3,14 +3,14 @@ var router = express.Router();
 var pool = require('../modules/pool');
 
 // Handles Ajax request for user information if user is authenticated
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
   console.log('get /user route');
   // check if logged in
-  if(req.isAuthenticated()) {
+  if (req.isAuthenticated()) {
     // send back user object from database
     console.log('logged in', req.user);
     var userInfo = {
-      username : req.user.username
+      username: req.user.username
     };
     res.send(userInfo);
   } else {
@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
 });
 
 // clear all server session information about this user
-router.get('/logout', function(req, res) {
+router.get('/logout', function (req, res) {
   // Use passport's built-in method to log out the user
   console.log('Logged out');
   req.logOut();
@@ -30,24 +30,43 @@ router.get('/logout', function(req, res) {
 });
 
 //gets a list of all users to display on User List view
-router.get('/all', function (req, res) {  
+router.get('/all', function (req, res) {
   pool.connect(function (errorConnectingToDatabase, client, done) {
-      if (errorConnectingToDatabase) {
-          console.log('error', errorConnectingToDatabase);
+    if (errorConnectingToDatabase) {
+      console.log('error', errorConnectingToDatabase);
+      res.sendStatus(500);
+    } else {
+      client.query('SELECT * from users ORDER BY first_name', function (errorMakingDatabaseQuery, result) {
+        done();
+        if (errorMakingDatabaseQuery) {
+          console.log('error', errorMakingDatabaseQuery);
           res.sendStatus(500);
-      } else {
-          client.query('SELECT * from users ORDER BY first_name', function (errorMakingDatabaseQuery, result) {
-              done();
-              if (errorMakingDatabaseQuery) {
-                  console.log('error', errorMakingDatabaseQuery);
-                  res.sendStatus(500);
-              } else {
-                  res.send(result.rows);
-              }
-          });
-      }
+        } else {
+          res.send(result.rows);
+        }
+      });
+    }
   });
 });
 
+router.delete('/:id', function (req, res) {
+  var userToRemove = req.params.id;
+  pool.connect(function (errorConnectingToDatabase, client, done) {
+    if (errorConnectingToDatabase) {
+      console.log('Error connecting to database', errorConnectingToDatabase);
+      res.sendStatus(500);
+    } else {
+      client.query(`DELETE FROM users WHERE id=$1;`, [userToRemove], function (errorMakingQuery, result) {
+        done();
+        if (errorMakingQuery) {
+          console.log('Error making query', errorMakingQuery);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(200);
+        }
+      });
+    }
+  });
+});
 
 module.exports = router;

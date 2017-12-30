@@ -6,4 +6,5 @@ myApp.controller('UserController', ['UserService','GigService',function(UserServ
   vm.userObject = UserService.userObject;
   UserService.getAllUsers();
   vm.users = UserService.users;
+  vm.deleteUser = UserService.deleteUser;
 }]);
