@@ -63,29 +63,37 @@
             <tbody>
                 <tr ng-repeat="gig in gc.gigs.list">
                     <td>
-                        {{gig.date | date : "MM/dd/y" }}
+                        <span ng-hide="gig.isEditable">{{gig.date | date : "MM/dd/y" }}</span>
+                        <input ng-show="gig.isEditable" type="text" ng-model="gig.date">
                     </td>
                     <td>
-                        {{gig.location}}
+                        <span ng-hide="gig.isEditable">{{gig.location }}</span>
+                        <input ng-show="gig.isEditable" type="text" ng-model="gig.location">
                     </td>
                     <td>
-                        {{gig.start_time | date : "h:mma"}}
+                        <span ng-hide="gig.isEditable">{{gig.start_time | date : "h:mma"}}</span>
+                        <input ng-show="gig.isEditable" type="text" ng-model="gig.start_time">
                     </td>
                     <td>
-                        {{gig.end_time | date : "h:mma"}}
+                        <span ng-hide="gig.isEditable">{{gig.end_time | date : "h:mma"}}</span>
+                        <input ng-show="gig.isEditable" type="text" ng-model="gig.end_time">
                     </td>
                     <td>
-                        {{gig.load_time | date : "h:mma"}}
+                        <span ng-hide="gig.isEditable">{{gig.load_time | date : "h:mma"}}</span>
+                        <input ng-show="gig.isEditable" type="text" ng-model="gig.load_time">
                     </td>
                     <td>
-                        {{gig.gig_song_id}}
+                        <span ng-hide="gig.isEditable">{{gig.gig_song_id}}</span>
+                        <input ng-show="gig.isEditable" type="text" ng-model="gig.gig_song_id">
                     </td>
                     <td>
-                        {{gig.details}}
+                        <span ng-hide="gig.isEditable">{{gig.details}}</span>
+                        <input ng-show="gig.isEditable" type="text" ng-model="gig.details">
                     </td>
                     <!-- button placeholders -->
                     <td>
-                        <button ng-click="vm.deleteHero(hero)">Edit</button>
+                        <button ng-hide="gig.isEditable" ng-click="gig.isEditable = !gig.isEditable">Edit</button>
+                        <button ng-show="gig.isEditable" ng-click="gc.editGig(gig)">Save</button>
                     </td>
                     <td>
                         <button ng-click="gc.deleteGig(gig)">Delete</button>

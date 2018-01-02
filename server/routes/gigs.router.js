@@ -68,6 +68,25 @@ router.delete('/:id', function (req,res){
     });
 })
 
-
+router.put('/', function (req,res){
+    var gigToEdit = req.body;
+    pool.connect(function(errorConnectingToDatabase, client, done){
+        if(errorConnectingToDatabase){
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`UPDATE gig SET date=$1, location=$2, start_time=$3, end_time=$4, load_time=$5, gig_song_id=$6, details=$7
+            WHERE "id" = $8;`, [gigToEdit.date, gigToEdit.location, gigToEdit.start_time, gigToEdit.end_time, gigToEdit.load_time, gigToEdit.gig_song_id, gigToEdit.details, gigToEdit.id], function(errorMakingQuery, result){
+                done();
+                if(errorMakingQuery){
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else{
+                    res.sendStatus(200);
+                }
+            });
+        }
+    });
+  })
 
 module.exports = router;

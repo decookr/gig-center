@@ -26,9 +26,7 @@
                     </td>
                     <td>
                       <button ng-hide="user.isEditable" ng-click="user.isEditable = !user.isEditable">Edit</button>
-                    </td>
-                    <td>
-                        <button ng-show="user.isEditable" ng-click="uc.editUser(user)">Save</button>
+                      <button ng-show="user.isEditable" ng-click="uc.editUser(user)">Save</button>
                     </td>
                     <td>
                         <button ng-click="uc.deleteUser(user)">Delete</button>

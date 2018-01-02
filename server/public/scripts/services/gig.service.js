@@ -41,4 +41,16 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
             self.getGigs();
         });
     };
+
+    self.editGig = function (gigToEdit) {
+        console.log(gigToEdit);
+        $http({
+          method: 'PUT',
+          url: '/gigs/',
+          data: gigToEdit,
+        }).then(function (response) {
+          console.log('response', response);
+          self.getGigs();
+        });
+      }
 }]);
