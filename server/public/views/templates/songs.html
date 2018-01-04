@@ -38,32 +38,39 @@
             <tbody>
                 <tr ng-repeat="song in sc.songs.list">
                     <td>
-                        {{song.title}}
+                        <span ng-hide="song.isEditable">{{song.title}}</span>
+                        <input ng-show="song.isEditable" type="text" ng-model="song.title">
                     </td>
                     <td>
-                        {{song.artist}}
+                        <span ng-hide="song.isEditable">{{song.artist}}</span>
+                        <input ng-show="song.isEditable" type="text" ng-model="song.artist">    
                     </td>
                     <td>
-                        {{song.length}}
+                        <span ng-hide="song.isEditable">{{song.length}}</span>
+                        <input ng-show="song.isEditable" type="text" ng-model="song.length">   
                     </td>
                     <td>
-                        {{song.bpm}}
+                        <span ng-hide="song.isEditable">{{song.bpm}}</span>
+                        <input ng-show="song.isEditable" type="text" ng-model="song.bpm">   
                     </td>
                     <td>
-                        {{song.key}}
+                        <span ng-hide="song.isEditable">{{song.key}}</span>
+                        <input ng-show="song.isEditable" type="text" ng-model="song.key">  
                     </td>
                     <td>
-                        {{song.recording_url}}
+                        <span ng-hide="song.isEditable">{{song.recording_url}}</span>
+                        <input ng-show="song.isEditable" type="text" ng-model="song.recording_url">  
+                    </td>
+                    <td></td>
+                        <span ng-hide="song.isEditable">{{song.pdf_url}}</span>
+                        <input ng-show="song.isEditable" type="text" ng-model="song.pdf_url">  
                     </td>
                     <td>
-                        {{song.pdf_url}}
-                    </td>
-                    <!-- button placeholders -->
-                    <td>
-                        <button ng-click="vm.deleteHero(hero)">Edit</button>
+                        <button ng-hide="song.isEditable" ng-click="song.isEditable = !song.isEditable">Edit</button>
+                        <button ng-show="song.isEditable" ng-click="sc.editSong(song)">Save</button>
                     </td>
                     <td>
-                        <button ng-click="vm.deleteHero(hero)">Delete</button>
+                        <button ng-click="sc.deleteSong(song)">Delete</button>
                     </td>
                 </tr>
             </tbody>

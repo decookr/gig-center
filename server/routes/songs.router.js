@@ -45,27 +45,46 @@ router.post('/', function (req, res) {
     });
 })
 
+router.delete('/:id', function (req, res) {
+    var songToRemove = req.params.id;
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`DELETE FROM song WHERE id=$1;`, [songToRemove], function (errorMakingQuery, result) {
+                done();
+                if (errorMakingQuery) {
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(200);
+                }
+            });
+        }
+    });
+})
 
-// router.delete('/:id', function (req,res){
-//     var heroToRemove = req.params.id;
-//     pool.connect(function(errorConnectingToDatabase, client, done){
-//         if(errorConnectingToDatabase){
-//             console.log('Error connecting to database', errorConnectingToDatabase);
-//             res.sendStatus(500);
-//         } else {
-//             client.query(`DELETE FROM hero WHERE id=$1;`, [heroToRemove], function(errorMakingQuery, result){
-//                 done();
-//                 if(errorMakingQuery){
-//                     console.log('Error making query', errorMakingQuery);
-//                     res.sendStatus(500);
-//                 } else{
-//                     res.sendStatus(200);
-//                 }
-//             });
-//         }
-//     });
-// })
-
+router.put('/', function (req, res) {
+    var songToEdit = req.body;
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`UPDATE song SET title=$1, artist=$2, length=$3, bpm=$4, key=$5, recording_url=$6, pdf_url=$7
+            WHERE "id" = $8;`, [songToEdit.title, songToEdit.artist, songToEdit.length, songToEdit.bpm, songToEdit.key, songToEdit.recording_url, songToEdit.pdf_url, songToEdit.id], function (errorMakingQuery, result) {
+                    done();
+                    if (errorMakingQuery) {
+                        console.log('Error making query', errorMakingQuery);
+                        res.sendStatus(500);
+                    } else {
+                        res.sendStatus(200);
+                    }
+                });
+        }
+    });
+})
 
 
 module.exports = router;

@@ -90,8 +90,7 @@
                         <span ng-hide="gig.isEditable">{{gig.details}}</span>
                         <input ng-show="gig.isEditable" type="text" ng-model="gig.details">
                     </td>
-                    <!-- button placeholders -->
-                    <td>
+]                    <td>
                         <button ng-hide="gig.isEditable" ng-click="gig.isEditable = !gig.isEditable">Edit</button>
                         <button ng-show="gig.isEditable" ng-click="gc.editGig(gig)">Save</button>
                     </td>

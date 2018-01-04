@@ -1,5 +1,5 @@
-myApp.service('SongService', ['$http', '$location', function ($http, $location, SongService){
-    
+myApp.service('SongService', ['$http', '$location', function ($http, $location, SongService) {
+
     var self = this;
 
     self.songs = { list: [] };  //empty array for songs to go into, use object
@@ -21,25 +21,35 @@ myApp.service('SongService', ['$http', '$location', function ($http, $location, 
             data: newSong
         }).then(function (response) {
             self.getSongs();
-            newSong.title='',
-            newSong.artist='',
-            newSong.length='',
-            newSong.bpm='',
-            newSong.key='',
-            newSong.recording_url='',
-            newSong.pdf_url=''
+            newSong.title = '',
+                newSong.artist = '',
+                newSong.length = '',
+                newSong.bpm = '',
+                newSong.key = '',
+                newSong.recording_url = '',
+                newSong.pdf_url = ''
         });
     }
 
-//     // self.deleteHero = function (heroToDelete) {
-//     //     console.log(heroToDelete);
-//     //     $http({
-//     //         method: 'DELETE',
-//     //         url: '/hero/' + heroToDelete.id,
-//     //     }).then(function (response) {
-//     //         console.log('response', response);
-//     //         self.getHero();
-//     //     });
-//     // };
+    self.deleteSong = function (songToDelete) {
+        $http({
+            method: 'DELETE',
+            url: '/songs/' + songToDelete.id,
+        }).then(function (response) {
+            self.getSongs();
+        });
+    };
+
+    self.editSong = function (songToEdit) {
+        console.log(songToEdit);
+        $http({
+            method: 'PUT',
+            url: '/songs/',
+            data: songToEdit,
+        }).then(function (response) {
+            console.log('response', response);
+            self.getSongs();
+        });
+    }
 
 }]);
