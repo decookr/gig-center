@@ -3,9 +3,9 @@
     <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
     <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button>
 </div>
-<div class="container">
-    {{gc}}
+<div class="container" ng-controller="GigController as gc">
     <h3>Your Schedule</h3>
+    {{gc.userGigs.list}}
     <table class="table table-striped">
             <thead>
                 <tr>
@@ -13,18 +13,15 @@
                     <th>Location</th>
                     <th>Start Time</th>
                     <th>End Time</th>
-                    <th>Load-In Time</th>
-                    <th>Song List Number</th>
-                    <th>Details</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="gig in gc.gigs.list">
+                <tr ng-repeat="gig in gc.userGigs.list">
                     <td>
-                        {{gig.date | date :  "dd/MM/y" }}
+                        {{gig.gig_date | date :  "MM/dd/y" }}
                     </td>
                     <td>
-                        {{gig.location}}
+                        {{gig.gig_location}}
                     </td>
                     <td>
                         {{gig.start_time | date : "h:mma"}}
@@ -33,20 +30,7 @@
                         {{gig.end_time | date : "h:mma"}}
                     </td>
                     <td>
-                        {{gig.load_time | date : "h:mma"}}
-                    </td>
-                    <td>
-                        {{gig.gig_song_id}}
-                    </td>
-                    <td>
-                        {{gig.details}}
-                    </td>
-                    <!-- button placeholders -->
-                    <td>
-                        <button ng-click="vm.deleteHero(hero)">Edit</button>
-                    </td>
-                    <td>
-                        <button ng-click="vm.deleteHero(hero)">Delete</button>
+                        <button><a ng-href="gigs/{{gig.id}}">Details</a></button>
                     </td>
                 </tr>
             </tbody>

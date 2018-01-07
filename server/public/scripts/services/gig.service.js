@@ -1,35 +1,47 @@
-myApp.service('GigService', ['$http', '$location', function ($http, $location, GigService){
-    
+myApp.service('GigService', ['$http', '$location', function ($http, $location, GigService) {
+
     var self = this;
+    self.gigs = { list: [] };
+    self.userGigs = { list: [] };
 
-    self.gigs = { list: [] };  //empty array for gigs to go into, use object
-
+    //GET all gigs
     self.getGigs = function () {
         $http({
             method: 'GET',
             url: '/gigs/',
         }).then(function (response) {
-            console.log('response', response.data); ///response.data will just send back the array of objects, not all the extra info
+            console.log('response', response.data);
             self.gigs.list = response.data;
         });
     };
 
+    //GET user gigs
+    self.getUserGigs = function () {
+        $http({
+            method: 'GET',
+            url: '/gigs/user_gig/',
+        }).then(function (response) {
+            console.log('response userGigs', response.data);
+            self.userGigs.list = response.data;
+        });
+    };
+
+    //add a gig
     self.addGig = function (newGig) {
         console.log(newGig);
-        
         $http({
             method: 'POST',
             url: '/gigs/',
             data: newGig,
         }).then(function (response) {
             self.getGigs();
-            newGig.date='',
-            newGig.location='',
-            newGig.start_time='',
-            newGig.end_time='',
-            newGig.load_time='',
-            newGig.gig_song_id='',
-            newGig.details=''
+            newGig.date = '',
+                newGig.location = '',
+                newGig.start_time = '',
+                newGig.end_time = '',
+                newGig.load_time = '',
+                newGig.gig_song_id = '',
+                newGig.details = ''
         });
     }
 
@@ -45,12 +57,12 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
     self.editGig = function (gigToEdit) {
         console.log(gigToEdit);
         $http({
-          method: 'PUT',
-          url: '/gigs/',
-          data: gigToEdit,
+            method: 'PUT',
+            url: '/gigs/',
+            data: gigToEdit,
         }).then(function (response) {
-          console.log('response', response);
-          self.getGigs();
+            console.log('response', response);
+            self.getGigs();
         });
-      }
+    }
 }]);

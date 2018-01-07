@@ -58,10 +58,14 @@
                         <input ng-show="song.isEditable" type="text" ng-model="song.key">  
                     </td>
                     <td>
-                        <span ng-hide="song.isEditable">{{song.recording_url}}</span>
+                        <span ng-hide="song.isEditable">
+                            <a ng-href="{{song.recording_url}}" target="_blank">
+                                <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+                            </a>
+                            </span>
                         <input ng-show="song.isEditable" type="text" ng-model="song.recording_url">  
                     </td>
-                    <td></td>
+                    <td>
                         <span ng-hide="song.isEditable">{{song.pdf_url}}</span>
                         <input ng-show="song.isEditable" type="text" ng-model="song.pdf_url">  
                     </td>

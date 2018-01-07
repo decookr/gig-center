@@ -3,11 +3,11 @@
     <div>
         <h2>Add Gig</h2>
         <form ng-submit="gc.addGig(gc.gigs)" class="form">
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <label for="date">Date</label>
                 <input type="date" class="form-control" ng-model="gc.gigs.date" />
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <label for="location">Location</label>
                 <input type="text" class="form-control" ng-model="gc.gigs.location" placeholder="venue, address, etc." />
             </div>
@@ -31,20 +31,18 @@
                 <label for="details">Details</label>
                 <input type="text" class="form-control" ng-model="gc.gigs.details" />
             </div>
-            <div  ng-controller="UserController as uc">
-                <!-- {{uc.users.list}} -->
+            <!-- <div ng-controller="UserController as uc">
                 <label for="members">Band Members: </label>
-                <label class="checkbox-inline" ng-repeat="user in uc.users.list" for="band_members">
-                    <input type="checkbox" name="band_members" ng-model="user.id"> {{user.first_name}}
+                <label class="checkbox-inline" ng-repeat="user in uc.users.list" for="band_members" ng-model="gc.gigs.user_id">
+                    <input type="checkbox" name="band_members" ng-value="user.id"  > {{user.first_name}}
                     <br>
                 </label>
                 <br>
-            </div>
+            </div> -->
             <div>
-                <input class="btn btn-default" type="submit" name="submit" value="Add Gig" />
+                <input class="btn btn-default" type="submit" name="submit" value="Add Gig"/>
             </div>
         </form>
-
     </div>
     <div>
         <h2>Gig List</h2>
@@ -90,7 +88,7 @@
                         <span ng-hide="gig.isEditable">{{gig.details}}</span>
                         <input ng-show="gig.isEditable" type="text" ng-model="gig.details">
                     </td>
-]                    <td>
+                    <td>
                         <button ng-hide="gig.isEditable" ng-click="gig.isEditable = !gig.isEditable">Edit</button>
                         <button ng-show="gig.isEditable" ng-click="gc.editGig(gig)">Save</button>
                     </td>

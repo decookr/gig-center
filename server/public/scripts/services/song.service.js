@@ -2,18 +2,20 @@ myApp.service('SongService', ['$http', '$location', function ($http, $location, 
 
     var self = this;
 
-    self.songs = { list: [] };  //empty array for songs to go into, use object
+    self.songs = { list: [] }; 
 
+    //GET all songs
     self.getSongs = function () {
         $http({
             method: 'GET',
             url: '/songs/',
         }).then(function (response) {
-            console.log('response', response.data); ///response.data will just send back the array of objects, not all the extra info
+            console.log('response', response.data);
             self.songs.list = response.data;
         });
     };
 
+    //add a song
     self.addSong = function (newSong) {
         $http({
             method: 'POST',

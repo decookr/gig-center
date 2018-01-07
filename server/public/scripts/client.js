@@ -58,6 +58,15 @@ myApp.config(function($routeProvider, $locationProvider) {
         }
       }
     })
+    .when('/gig-details', {
+      templateUrl: '/views/templates/gig-details.html',
+      controller: 'GigController as gc',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
     .otherwise({
       redirectTo: 'home'
     });

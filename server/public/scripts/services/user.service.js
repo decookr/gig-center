@@ -30,7 +30,7 @@ myApp.service('UserService', function ($http, $location) {
       });
     }
 
-  //gets a list of all users to display on User List view
+  //GET a list of all users to display on User List view
   self.getAllUsers = function () {
     $http({
       method: 'GET',
