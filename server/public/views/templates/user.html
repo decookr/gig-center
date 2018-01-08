@@ -23,13 +23,14 @@
                         {{gig.gig_location}}
                     </td>
                     <td>
-                        {{gig.start_time | date : "h:mma"}}
+                        {{gig.gig_start | date : "h:mma"}}
                     </td>
                     <td>
-                        {{gig.end_time | date : "h:mma"}}
+                        {{gig.gig_end | date : "h:mma"}}
                     </td>
                     <td>
-                        <button><a ng-href="gigs/{{gig.id}}">Details</a></button>
+                        <button><a href="/#/gigs">Details</a></button>
+                        <!-- <button ng-click="gc.getGigDetail(gig)">Details</button> -->
                     </td>
                 </tr>
             </tbody>

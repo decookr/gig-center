@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
             console.log('error', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query('SELECT * FROM gig ORDER BY date', function (errorMakingDatabaseQuery, result) {
+            client.query('SELECT * FROM gig ORDER BY date;', function (errorMakingDatabaseQuery, result) {
                 done();
                 if (errorMakingDatabaseQuery) {
                     console.log('error', errorMakingDatabaseQuery);
@@ -32,6 +32,28 @@ router.get('/user_gig', function (req, res) {
             client.query(`SELECT users.id, users.first_name AS member_list, gig.location AS gig_location, gig.date AS gig_date, gig.start_time AS gig_start, gig.end_time AS gig_end FROM user_gig
             JOIN "users" ON users.id = user_gig.users_id
             JOIN "gig" ON gig.id = user_gig.gig_id;`, function (errorMakingDatabaseQuery, result) {
+                done();
+                if (errorMakingDatabaseQuery) {
+                    console.log('error', errorMakingDatabaseQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.send(result.rows);
+                }
+            });
+        }
+    });
+});
+
+//GET specific gig details
+router.get('/:id', function (req, res) {
+    console.log('this gig:',req.body);
+    
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            console.log('error', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`SELECT * FROM gig WHERE users_id=$1;`, [req.user.id], function (errorMakingDatabaseQuery, result) {
                 done();
                 if (errorMakingDatabaseQuery) {
                     console.log('error', errorMakingDatabaseQuery);

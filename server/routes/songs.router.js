@@ -31,7 +31,7 @@ router.post('/', function (req, res) {
             res.sendStatus(500);
         } else {
             client.query(`INSERT INTO song (title, artist, length, bpm, key, recording_url, pdf_url)
-            VALUES ($1, $2, $3, $4, $5, $6, $7);`, [song.title, song.artist, song.length, song.bpm, song.key, song.recoring_url, song.pdf_url ], 
+            VALUES ($1, $2, $3, $4, $5, $6, $7);`, [song.title, song.artist, song.length, song.bpm, song.key, song.recording_url, song.pdf_url ], 
             function(errorMakingQuery, result){
                 done();
                 if(errorMakingQuery){

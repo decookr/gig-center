@@ -58,7 +58,7 @@
                 <th>Start Time</th>
                 <th>End Time</th>
                 <th>Load-In Time</th>
-                <th>Song List Number</th>
+                <!-- <th>Song List Number</th> -->
                 <th>Details</th>
             </tr>
         </thead>
@@ -84,10 +84,10 @@
                     <span ng-hide="gig.isEditable">{{gig.load_time | date : "h:mma"}}</span>
                     <input ng-show="gig.isEditable" type="text" ng-model="gig.load_time">
                 </td>
-                <td>
+                <!-- <td>
                     <span ng-hide="gig.isEditable">{{gig.gig_song_id}}</span>
                     <input ng-show="gig.isEditable" type="text" ng-model="gig.gig_song_id">
-                </td>
+                </td> -->
                 <td>
                     <span ng-hide="gig.isEditable">{{gig.details}}</span>
                     <input ng-show="gig.isEditable" type="text" ng-model="gig.details">
