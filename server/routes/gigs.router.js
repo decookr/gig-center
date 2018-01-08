@@ -24,6 +24,8 @@ router.get('/', function (req, res) {
 
 //GET a user's assigned gigs
 router.get('/user_gig', function (req, res) {
+    console.log(req.params);
+    
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
             console.log('error', errorConnectingToDatabase);
@@ -31,7 +33,8 @@ router.get('/user_gig', function (req, res) {
         } else {
             client.query(`SELECT users.id, users.first_name AS member_list, gig.location AS gig_location, gig.date AS gig_date, gig.start_time AS gig_start, gig.end_time AS gig_end FROM user_gig
             JOIN "users" ON users.id = user_gig.users_id
-            JOIN "gig" ON gig.id = user_gig.gig_id;`, function (errorMakingDatabaseQuery, result) {
+            JOIN "gig" ON gig.id = user_gig.gig_id
+            WHERE user_gig.users_id=$1;`, [req.user.id], function (errorMakingDatabaseQuery, result) {
                 done();
                 if (errorMakingDatabaseQuery) {
                     console.log('error', errorMakingDatabaseQuery);
