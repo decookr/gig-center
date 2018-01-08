@@ -71,17 +71,17 @@ router.get('/:id', function (req, res) {
 
 //add a gig to gig table and assign users to a gig in user_gig table
 router.post('/', function (req, res) {
-    // console.log(req.body);
+    console.log(req.body);
     var gig = req.body;
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
             console.log('Error connecting to database', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`INSERT INTO gig (date, location, start_time, end_time, load_time, gig_song_id, details)
-            VALUES ($1, $2, $3, $4, $5, $6, $7); 
-            INSERT INTO user_gig (users_id, id) 
-            VALUES ($8, $9);`, [gig.date, gig.location, gig.start_time, gig.end_time, gig.load_time, gig.gig_song_id, gig.details, gig.users_id, gig.id],
+            client.query(`WITH new_gig AS (INSERT INTO gig (date, location, start_time, end_time, load_time, gig_song_id, details)
+            VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id)
+            INSERT INTO user_gig (users_id, gig_id)
+            VALUES ($8, (SELECT id FROM new_gig));`, [gig.date, gig.location, gig.start_time, gig.end_time, gig.load_time, gig.gig_song_id, gig.details, gig.users_id],
                 function (errorMakingQuery, result) {
                     done();
                     if (errorMakingQuery) {

@@ -31,14 +31,14 @@
                 <label for="details">Details</label>
                 <input type="text" class="form-control" ng-model="gc.gigs.details" />
             </div>
-            <!-- <div ng-controller="UserController as uc">
+            <div ng-controller="UserController as uc">
                 <label for="members">Band Members: </label>
-                <label class="checkbox-inline" ng-repeat="user in uc.users.list" for="band_members" ng-model="gc.gigs.user_id">
-                    <input type="checkbox" name="band_members" ng-value="user.id"  > {{user.first_name}}
+                <label class="checkbox-inline" ng-repeat="user in uc.users.list" for="band_members" >
+                    <input type="checkbox" name="user" ng-model="gc.gigs.users_id" ng-true-value="{{user.id}}"> {{user.first_name}}
                     <br>
                 </label>
                 <br>
-            </div> -->
+            </div>
             <div class="col-md-12">
                 <div>
                     <input class="btn btn-default" type="submit" name="submit" value="Add Gig" />
