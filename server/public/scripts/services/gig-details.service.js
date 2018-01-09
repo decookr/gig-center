@@ -3,9 +3,8 @@ myApp.service('GigDetailsService', ['$http', '$location', function ($http, $loca
     var self = this;
     self.gig = { details: {} };
 
-    //GET gig detail
+    //GET details for each gig and display them in their own view using $routeparams
     self.getGigDetail = function (gigId) {
-        console.log('gigToGet:', gigId);
         $http({
             method: 'GET',
             url: '/gigDetails/',
@@ -13,7 +12,6 @@ myApp.service('GigDetailsService', ['$http', '$location', function ($http, $loca
                 gigId: gigId
             }
         }).then(function (response) {
-            console.log('response getGigDetail', response.data);
             self.gig.details = response.data;
         });
     };

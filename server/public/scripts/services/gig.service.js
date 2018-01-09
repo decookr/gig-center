@@ -3,7 +3,6 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
     var self = this;
     self.gigs = { list: [] };
     self.userGigs = { list: [] };
-    self.gigDetail = { list: [] };
 
     //GET all gigs
     self.getGigs = function () {
@@ -16,7 +15,7 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
         });
     };
 
-    //GET user gigs
+    //GET gigs assigned to logged in user
     self.getUserGigs = function () {
         $http({
             method: 'GET',
@@ -24,18 +23,6 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
         }).then(function (response) {
             console.log('response userGigs', response.data);
             self.userGigs.list = response.data;
-        });
-    };
-
-    //GET gig detail
-    self.getGigDetail = function (gig) {
-        console.log('gigToGet:', gig);
-        $http({
-            method: 'GET',
-            url: '/gigs/user_gig',
-        }).then(function (response) {
-            console.log('response getGigDetail', response.data);
-            self.gigDetail.list = response.data;
         });
     };
 
