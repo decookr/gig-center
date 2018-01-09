@@ -54,4 +54,15 @@ myApp.service('SongService', ['$http', '$location', function ($http, $location, 
         });
     }
 
+        //add songs to a specified gig
+        self.addSongsToGig = function (songsToAdd) {
+            $http({
+                method: 'POST',
+                url: '/songs/gig-song',
+                data: songsToAdd
+            }).then(function (response) {
+                self.getSongs();
+            });
+        }
+
 }]);
