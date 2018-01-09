@@ -11,6 +11,7 @@ var userRouter = require('./routes/user.router');
 var registerRouter = require('./routes/register.router');
 var gigRouter = require('./routes/gigs.router');
 var songRouter = require('./routes/songs.router');
+var gigDetailsRouter = require('./routes/gig-details.router')
 
 var port = process.env.PORT || 5000;
 
@@ -32,7 +33,8 @@ app.use(passport.session());
 app.use('/register', registerRouter);
 app.use('/user', userRouter);
 app.use('/gigs', gigRouter);
-app.use('/songs', songRouter)
+app.use('/songs', songRouter);
+app.use('/gigDetails', gigDetailsRouter);
 
 // Catch all bucket, must be last!
 app.use('/', indexRouter);

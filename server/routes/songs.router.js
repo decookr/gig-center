@@ -30,8 +30,8 @@ router.post('/', function (req, res) {
             console.log('Error connecting to database', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`INSERT INTO song (title, artist, length, bpm, key, recording_url, pdf_url)
-            VALUES ($1, $2, $3, $4, $5, $6, $7);`, [song.title, song.artist, song.length, song.bpm, song.key, song.recording_url, song.pdf_url ], 
+            client.query(`INSERT INTO song (title, artist, length, bpm, key, recording_url)
+            VALUES ($1, $2, $3, $4, $5, $6, $7);`, [song.title, song.artist, song.length, song.bpm, song.key, song.recording_url], 
             function(errorMakingQuery, result){
                 done();
                 if(errorMakingQuery){
@@ -72,8 +72,8 @@ router.put('/', function (req, res) {
             console.log('Error connecting to database', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`UPDATE song SET title=$1, artist=$2, length=$3, bpm=$4, key=$5, recording_url=$6, pdf_url=$7
-            WHERE "id" = $8;`, [songToEdit.title, songToEdit.artist, songToEdit.length, songToEdit.bpm, songToEdit.key, songToEdit.recording_url, songToEdit.pdf_url, songToEdit.id], function (errorMakingQuery, result) {
+            client.query(`UPDATE song SET title=$1, artist=$2, length=$3, bpm=$4, key=$5, recording_url=$6
+            WHERE "id" = $8;`, [songToEdit.title, songToEdit.artist, songToEdit.length, songToEdit.bpm, songToEdit.key, songToEdit.recording_url, songToEdit.id], function (errorMakingQuery, result) {
                     done();
                     if (errorMakingQuery) {
                         console.log('Error making query', errorMakingQuery);

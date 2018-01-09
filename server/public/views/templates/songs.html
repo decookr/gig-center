@@ -15,8 +15,6 @@
                 <input type="text" ng-model="sc.songs.key" placeholder="Key"/>
                 <br>
                 <input type="text" ng-model="sc.songs.recording_url" placeholder="Recording Link"/>
-
-                <input type="text" ng-model="sc.songs.pdf_url" placeholder="PDF Link"/>
             </div>
             <input class="btn btn-default" type="submit" name="submit" value="Add Song" />
         </form>
@@ -32,7 +30,6 @@
                     <th>BPM</th>
                     <th>Key</th>
                     <th>Play</th>
-                    <th>PDF</th>
                 </tr>
             </thead>
             <tbody>
@@ -64,10 +61,6 @@
                             </a>
                             </span>
                         <input ng-show="song.isEditable" type="text" ng-model="song.recording_url">  
-                    </td>
-                    <td>
-                        <span ng-hide="song.isEditable">{{song.pdf_url}}</span>
-                        <input ng-show="song.isEditable" type="text" ng-model="song.pdf_url">  
                     </td>
                     <td>
                         <button ng-hide="song.isEditable" ng-click="song.isEditable = !song.isEditable">Edit</button>

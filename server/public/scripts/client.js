@@ -58,9 +58,9 @@ myApp.config(function($routeProvider, $locationProvider) {
         }
       }
     })
-    .when('/gig-details', {
+    .when('/gigs/:gigId', {
       templateUrl: '/views/templates/gig-details.html',
-      controller: 'GigController as gc',
+      controller: 'GigDetailsController as gdc',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
