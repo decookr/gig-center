@@ -89,8 +89,7 @@
                     <input ng-show="gig.isEditable" type="text" ng-model="gig.gig_song_id">
                 </td> -->
                 <td>
-                    <span ng-hide="gig.isEditable">{{gig.details}}</span>
-                    <input ng-show="gig.isEditable" type="text" ng-model="gig.details">
+                    <button><a ng-href="#/gigs/{{gig.id}}">View Details</a></button>
                 </td>
                 <td>
                     <button ng-hide="gig.isEditable" ng-click="gig.isEditable = !gig.isEditable">Edit</button>

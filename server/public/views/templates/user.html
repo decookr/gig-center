@@ -14,7 +14,6 @@
                     <th>End Time</th>
                 </tr>
             </thead>
-            {{gc.userGigs.list}}
             <tbody>
                 <tr ng-repeat="gig in gc.userGigs.list">
                     <td>
@@ -30,10 +29,7 @@
                         {{gig.gig_end | date : "h:mma"}}
                     </td>
                     <td>
-                        <a ng-href="#/gigs/{{gig.gig_id}}">View Details</a>
-                        <!-- <button><a href="/#/gigs">Details</a></button> -->
-                        <!-- <a href="#/gigs/" type="submit"  name="viewdetails" ng-click="gc.getGigDetail(gig.id)">Details</a> -->
-                        <!-- <button ng-click="gc.getGigDetail(gig.id)">Details</button> -->
+                        <button><a ng-href="#/gigs/{{gig.gig_id}}">View Details</a></button>
                     </td>
                 </tr>
             </tbody>
