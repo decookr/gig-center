@@ -33,6 +33,7 @@ myApp.service('SongService', ['$http', '$location', function ($http, $location, 
         });
     }
 
+    //delete a song from song list
     self.deleteSong = function (songToDelete) {
         $http({
             method: 'DELETE',
@@ -42,6 +43,7 @@ myApp.service('SongService', ['$http', '$location', function ($http, $location, 
         });
     };
 
+    //edit song information
     self.editSong = function (songToEdit) {
         console.log(songToEdit);
         $http({
@@ -56,12 +58,16 @@ myApp.service('SongService', ['$http', '$location', function ($http, $location, 
 
         //add songs to a specified gig
         self.addSongsToGig = function (songsToAdd) {
+            console.log('songs to add:', songsToAdd);
             $http({
                 method: 'POST',
                 url: '/songs/gig-song',
                 data: songsToAdd
-            }).then(function (response) {
+            }).then(function (response) {    
+                console.log(response);
+                            
                 self.getSongs();
+
             });
         }
 

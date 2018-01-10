@@ -21,9 +21,8 @@ router.get('/', function (req, res) {
     });
 });
 
-router.post('/', function (req, res) {
-    // console.log(req);
-    
+//POST a song to the songs database
+router.post('/', function (req, res) {    
     var song = req.body;
     pool.connect(function(errorConnectingToDatabase, client, done){
         if(errorConnectingToDatabase){
@@ -45,6 +44,31 @@ router.post('/', function (req, res) {
     });
 })
 
+//POST checked songs to the selected gig in gig_song table
+router.post('/gig-song', function (req, res) {
+    // console.log(req);
+    var song = req.body;
+    pool.connect(function(errorConnectingToDatabase, client, done){
+        if(errorConnectingToDatabase){
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`INSERT INTO gig_song (gig_id, song_id)
+            VALUES ($1, $2);`, [song.gig_id, song.song_id], 
+            function(errorMakingQuery, result){
+                done();
+                if(errorMakingQuery){
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else{
+                    res.sendStatus(201); 
+                }
+            });
+        }
+    });
+})
+
+// Delete a song from songs table
 router.delete('/:id', function (req, res) {
     var songToRemove = req.params.id;
     pool.connect(function (errorConnectingToDatabase, client, done) {
