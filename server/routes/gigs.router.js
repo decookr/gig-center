@@ -31,7 +31,8 @@ router.get('/user_gig', function (req, res) {
             console.log('error', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`SELECT users.id, users.first_name AS member_list, gig.id AS gig_id, gig.location AS gig_location, gig.date AS gig_date, gig.start_time AS gig_start, gig.end_time AS gig_end FROM user_gig
+            client.query(`SELECT users.id, users.first_name AS member_list, gig.id AS gig_id, gig.location AS gig_location, 
+            gig.date AS gig_date, gig.start_time AS gig_start, gig.end_time AS gig_end FROM user_gig
             JOIN "users" ON users.id = user_gig.users_id
             JOIN "gig" ON gig.id = user_gig.gig_id
             WHERE user_gig.users_id=$1

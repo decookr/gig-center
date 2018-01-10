@@ -3,5 +3,7 @@ myApp.controller('GigDetailsController', ['GigDetailsService', '$routeParams', f
     
     var vm = this;
     vm.gig = GigDetailsService.gig;
+    vm.gigSongs = GigDetailsService.gigSongs;
     GigDetailsService.getGigDetail($routeParams.gigId);
+    GigDetailsService.getGigSongs($routeParams.gigId);
 }]);
