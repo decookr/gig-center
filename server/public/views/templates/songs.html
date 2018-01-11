@@ -21,8 +21,8 @@
     </div>
     <div>
         <h2>Song List</h2>
-        <button ng-hide="add.addToGig" ng-click="add.addToGig = !add.addToGig">Assign Songs To Gig</button>
-        <button ng-show="add.addToGig" ng-click="add.addToGig = !add.addToGig">Done Adding!</button>
+        <button ng-hide="add.addToGig" ng-click="add.addToGig = !add.addToGig">Create A Setlist</button>
+        <button ng-show="add.addToGig" ng-click="add.addToGig = !add.addToGig">Done Adding Songs</button>
         <div ng-controller="GigController as gc">
             <select ng-show="add.addToGig" ng-model="sc.songToAdd.gig_id" name="gig" id="gigLocation">
                 <option ng-repeat="gig in gc.gigs.list" ng-value="{{gig.id}}">{{gig.location}}</option>
@@ -37,6 +37,9 @@
                     <th>BPM</th>
                     <th>Key</th>
                     <th>Play</th>
+                    <th>
+                        <button ng-hide="song.isEditable" ng-click="song.isEditable = !song.isEditable">Edit</button>
+                    </th>
                     <th ng-show="add.addToGig">Add To Gig</th>
                 </tr>
             </thead>
