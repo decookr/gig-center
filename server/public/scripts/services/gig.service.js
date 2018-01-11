@@ -15,7 +15,7 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
         });
     };
 
-    //GET gigs assigned to logged in user
+    //GET gigs assigned to the current user
     self.getUserGigs = function () {
         $http({
             method: 'GET',
@@ -45,6 +45,7 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
         });
     }
 
+    //delete a gig
     self.deleteGig = function (gigToDelete) {
         $http({
             method: 'DELETE',
@@ -54,6 +55,7 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
         });
     };
 
+    //edit all gig details
     self.editGig = function (gigToEdit) {
         console.log(gigToEdit);
         $http({

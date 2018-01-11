@@ -4,7 +4,7 @@ var pool = require('../modules/pool');
 
 //GET specific gig details
 router.get('/', function (req, res) {
-    var gigId = req.query.gigId;    
+    var gigId = req.query.gigId;
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
             console.log('error', errorConnectingToDatabase);
@@ -25,7 +25,7 @@ router.get('/', function (req, res) {
 
 //GET song list for a specific gig from gig_song table
 router.get('/gigSongs', function (req, res) {
-    var gigId = req.query.gigId;    
+    var gigId = req.query.gigId;
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
             console.log('error', errorConnectingToDatabase);
@@ -38,14 +38,14 @@ router.get('/gigSongs', function (req, res) {
             WHERE gig_id=$1
             ORDER BY gig_song.song_order
             ;`, [gigId], function (errorMakingDatabaseQuery, result) {
-                done();
-                if (errorMakingDatabaseQuery) {
-                    console.log('error', errorMakingDatabaseQuery);
-                    res.sendStatus(500);
-                } else {
-                    res.send(result.rows);
-                }
-            });
+                    done();
+                    if (errorMakingDatabaseQuery) {
+                        console.log('error', errorMakingDatabaseQuery);
+                        res.sendStatus(500);
+                    } else {
+                        res.send(result.rows);
+                    }
+                });
         }
     });
 });
@@ -71,6 +71,7 @@ router.delete('/:id', function (req, res) {
     });
 })
 
+// Edit song order for specified gig
 router.put('/', function (req, res) {
     var songToEdit = req.body;
     pool.connect(function (errorConnectingToDatabase, client, done) {

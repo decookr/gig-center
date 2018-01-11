@@ -1,5 +1,5 @@
 myApp.service('GigDetailsService', ['$http', '$location', function ($http, $location, GigDetailsService) {
-    
+
     var self = this;
     self.gig = { details: {} };
     self.gigSongs = { list: {} };
@@ -41,7 +41,7 @@ myApp.service('GigDetailsService', ['$http', '$location', function ($http, $loca
             self.getGigSongs(gigId);
         });
     };
-    
+
     //edit the order of the song list
     self.editSongOrder = function (songToEdit, gigId) {
         console.log(songToEdit);

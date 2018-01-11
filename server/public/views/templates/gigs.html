@@ -33,7 +33,7 @@
             </div>
             <div ng-controller="UserController as uc">
                 <label for="members">Band Members: </label>
-                <label class="checkbox-inline" ng-repeat="user in uc.users.list" for="band_members" >
+                <label class="checkbox-inline" ng-repeat="user in uc.users.list" for="band_members">
                     <input type="checkbox" name="user" ng-model="gc.gigs.users_id" ng-true-value="{{user.id}}"> {{user.first_name}}
                     <br>
                 </label>
@@ -89,7 +89,9 @@
                     <input ng-show="gig.isEditable" type="text" ng-model="gig.gig_song_id">
                 </td> -->
                 <td>
-                    <button><a ng-href="#/gigs/{{gig.id}}">View Details</a></button>
+                    <button>
+                        <a ng-href="#/gigs/{{gig.id}}">View Details</a>
+                    </button>
                 </td>
                 <td>
                     <button ng-hide="gig.isEditable" ng-click="gig.isEditable = !gig.isEditable">Edit</button>

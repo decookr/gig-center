@@ -40,6 +40,7 @@ myApp.service('UserService', function ($http, $location) {
     });
   };
 
+  //Delete a user from the database
   self.deleteUser = function (userToDelete) {
     $http({
       method: 'DELETE',
@@ -49,6 +50,7 @@ myApp.service('UserService', function ($http, $location) {
     });
   };
 
+  //Edit user information
   self.editUser = function (userToEdit) {
     console.log(userToEdit);
     $http({

@@ -97,7 +97,7 @@ router.post('/', function (req, res) {
     });
 })
 
-
+// Delete a gig from gig table
 router.delete('/:id', function (req, res) {
     var gigToRemove = req.params.id;
     pool.connect(function (errorConnectingToDatabase, client, done) {
@@ -118,6 +118,7 @@ router.delete('/:id', function (req, res) {
     });
 })
 
+// Edit a gig
 router.put('/', function (req, res) {
     var gigToEdit = req.body;
     pool.connect(function (errorConnectingToDatabase, client, done) {

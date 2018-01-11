@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pool = require('../modules/pool');
 
+// Get all songs
 router.get('/', function (req, res) {
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
@@ -21,7 +22,7 @@ router.get('/', function (req, res) {
     });
 });
 
-//POST a song to the songs database
+// Add a song to the songs database
 router.post('/', function (req, res) {    
     var song = req.body;
     pool.connect(function(errorConnectingToDatabase, client, done){
@@ -44,7 +45,7 @@ router.post('/', function (req, res) {
     });
 })
 
-//POST checked songs to the selected gig in gig_song table
+//Add checked songs to the selected gig in gig_song table (Set List)
 router.post('/gig-song', function (req, res) {
     // console.log(req);
     var song = req.body;
@@ -89,6 +90,7 @@ router.delete('/:id', function (req, res) {
     });
 })
 
+// Edit song information
 router.put('/', function (req, res) {
     var songToEdit = req.body;
     pool.connect(function (errorConnectingToDatabase, client, done) {

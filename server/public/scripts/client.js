@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp', ['ngRoute']);
 
 /// Routes ///
-myApp.config(function($routeProvider, $locationProvider) {
+myApp.config(function ($routeProvider, $locationProvider) {
   $locationProvider.hashPrefix('');
   console.log('myApp -- config')
   $routeProvider
@@ -17,16 +17,7 @@ myApp.config(function($routeProvider, $locationProvider) {
       templateUrl: '/views/templates/user.html',
       controller: 'UserController as uc',
       resolve: {
-        getuser : function(UserService){
-          return UserService.getuser();
-        }
-      }
-    })
-    .when('/info', {
-      templateUrl: '/views/templates/info.html',
-      controller: 'InfoController',
-      resolve: {
-        getuser : function(UserService){
+        getuser: function (UserService) {
           return UserService.getuser();
         }
       }
@@ -35,7 +26,7 @@ myApp.config(function($routeProvider, $locationProvider) {
       templateUrl: '/views/templates/user-list.html',
       controller: 'UserController as uc',
       resolve: {
-        getuser : function(UserService){
+        getuser: function (UserService) {
           return UserService.getuser();
         }
       }
@@ -44,7 +35,7 @@ myApp.config(function($routeProvider, $locationProvider) {
       templateUrl: '/views/templates/gigs.html',
       controller: 'GigController as gc',
       resolve: {
-        getuser : function(UserService){
+        getuser: function (UserService) {
           return UserService.getuser();
         }
       }
@@ -53,7 +44,7 @@ myApp.config(function($routeProvider, $locationProvider) {
       templateUrl: '/views/templates/songs.html',
       controller: 'SongController as sc',
       resolve: {
-        getuser : function(UserService){
+        getuser: function (UserService) {
           return UserService.getuser();
         }
       }
@@ -62,12 +53,12 @@ myApp.config(function($routeProvider, $locationProvider) {
       templateUrl: '/views/templates/gig-details.html',
       controller: 'GigDetailsController as gdc',
       resolve: {
-        getuser : function(UserService){
+        getuser: function (UserService) {
           return UserService.getuser();
         }
       }
     })
     .otherwise({
-      redirectTo: 'home'
+      redirectTo: 'user'
     });
 });

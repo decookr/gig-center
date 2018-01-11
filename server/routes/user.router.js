@@ -49,6 +49,7 @@ router.get('/all', function (req, res) {
   });
 });
 
+// Delete a user
 router.delete('/:id', function (req, res) {
   var userToRemove = req.params.id;
   pool.connect(function (errorConnectingToDatabase, client, done) {
@@ -69,6 +70,7 @@ router.delete('/:id', function (req, res) {
   });
 });
 
+// Edit user information
 router.put('/', function (req,res){
   var userToEdit = req.body;
   pool.connect(function(errorConnectingToDatabase, client, done){

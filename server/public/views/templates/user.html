@@ -6,33 +6,35 @@
 <div class="container" ng-controller="GigController as gc">
     <h3>Your Schedule</h3>
     <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Location</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="gig in gc.userGigs.list">
-                    <td>
-                        {{gig.gig_date | date :  "MM/dd/y" }}
-                    </td>
-                    <td>
-                        {{gig.gig_location}}
-                    </td>
-                    <td>
-                        {{gig.gig_start | date : "h:mma"}}
-                    </td>
-                    <td>
-                        {{gig.gig_end | date : "h:mma"}}
-                    </td>
-                    <td>
-                        <button><a ng-href="#/gigs/{{gig.gig_id}}">View Details</a></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="gig in gc.userGigs.list">
+                <td>
+                    {{gig.gig_date | date : "MM/dd/y" }}
+                </td>
+                <td>
+                    {{gig.gig_location}}
+                </td>
+                <td>
+                    {{gig.gig_start | date : "h:mma"}}
+                </td>
+                <td>
+                    {{gig.gig_end | date : "h:mma"}}
+                </td>
+                <td>
+                    <button>
+                        <a ng-href="#/gigs/{{gig.gig_id}}">View Details</a>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </div>
