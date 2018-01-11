@@ -14,7 +14,7 @@ body, html {
 .instructions {
   background-color: #0B4F6C;
   color: #DDDDDD;
-  padding: 15px;
+  padding: 30px;
 }
 
 #entryForm {
@@ -27,6 +27,10 @@ body, html {
 
 .container p{
   margin-top : 14px;
+}
+
+.headerbg {
+  background-color: #03161E;
 }
 
 .message {

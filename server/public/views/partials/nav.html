@@ -1,13 +1,20 @@
 <div class="navbar">
-  <div class="container">
-    <ul>
-      <li><a href="#/user"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-      <li><a href="#/user-list"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</a></li>
-      <li><a href="#/gigs"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Gigs</a></li>
-      <li><a href="#/songs"><span class="glyphicon glyphicon-music" aria-hidden="true"></span> Songs</a></li>
-
-
-
-    </ul>
-  </div>
+  <md-content class="md-padding">
+    <md-nav-bar md-no-ink-bar="disableInkBar" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+      <md-nav-item md-nav-href="#user" name="home">
+        <i class="material-icons">home</i> Home</a>
+      </md-nav-item>
+      <md-nav-item md-nav-href="#user-list" name="user-list">
+        <i class="material-icons">perm_identity</i> User</a>
+      </md-nav-item>
+      <md-nav-item md-nav-href="#gigs" name="gigs">
+        <i class="material-icons">event</i> Gigs</a>
+      </md-nav-item>
+      <md-nav-item md-nav-href="#/songs" name="songs">
+        <i class="material-icons">queue_music</i> Songs</a>
+      </md-nav-item>
+      <span flex></span>
+      <md-button class="btn btn-default" ng-controller="UserController as uc" ng-click="uc.userService.logout()">Log Out</md-button>
+    </md-nav-bar>
+  </md-content>
 </div>

@@ -99,7 +99,7 @@ router.put('/', function (req, res) {
             res.sendStatus(500);
         } else {
             client.query(`UPDATE song SET title=$1, artist=$2, length=$3, bpm=$4, key=$5, recording_url=$6
-            WHERE "id" = $8;`, [songToEdit.title, songToEdit.artist, songToEdit.length, songToEdit.bpm, songToEdit.key, songToEdit.recording_url, songToEdit.id], function (errorMakingQuery, result) {
+            WHERE "id" = $7;`, [songToEdit.title, songToEdit.artist, songToEdit.length, songToEdit.bpm, songToEdit.key, songToEdit.recording_url, songToEdit.id], function (errorMakingQuery, result) {
                     done();
                     if (errorMakingQuery) {
                         console.log('Error making query', errorMakingQuery);

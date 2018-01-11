@@ -1,6 +1,6 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<div class="container">
-    <div class="container user">
+<md-content class="container">
+    <div layout="column" layout-padding class="container user">
         <h2>Users</h2>
         <table class="table table-striped">
             <thead>
@@ -25,17 +25,24 @@
                         <input ng-show="user.isEditable" type="text" ng-model="user.username">
                     </td>
                     <td>
-                        <button ng-hide="user.isEditable" ng-click="user.isEditable = !user.isEditable">Edit</button>
-                        <button ng-show="user.isEditable" ng-click="uc.editUser(user)">Save</button>
+                        <md-button class="md-fab" ng-hide="user.isEditable" ng-click="user.isEditable = !user.isEditable">
+                                <i class="material-icons">mode_edit</i>
+                        </md-button>
+                        <md-button class="md-fab" ng-show="user.isEditable" ng-click="uc.editUser(user)">
+                                <i class="material-icons">save</i>
+                        </md-button>
                     </td>
                     <td>
-                        <button ng-click="uc.deleteUser(user)">Delete</button>
+                        <md-button class="md-fab" aria-label="Delete" ng-click="uc.deleteUser(user)">
+                            <i class="material-icons">delete_forever</i>
+                        </md-button>
+                        <!-- <md-button class="md-raised" ng-click="uc.deleteUser(user)">Delete</md-button> -->
                     </td>
                 </tr>
             </tbody>
         </table>
         <a href="#register">
-            <button class="btn btn-default">Add New User</button>
+            <md-button class="md-raised">Add New User</md-button>
         </a>
     </div>
-</div>
+</md-content>
