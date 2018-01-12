@@ -1,103 +1,104 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<md-content class="md-padding">
-    <div>
-        <h2>Add Gig</h2>
-        <form ng-submit="gc.addGig(gc.gigs)" class="form">
-            <md-input-container>
-                <label>Date</label>
-                <input ng-model="gc.gigs.date">
-            </md-input-container>
-            <md-input-container>
-                <label>Location</label>
-                <input ng-model="gc.gigs.location">
-            </md-input-container>
-            <md-input-container>
-                <label>Start Time</label>
-                <input ng-model="gc.gigs.start_time">
-            </md-input-container>
-            <md-input-container>
-                <label>End Time</label>
-                <input ng-model="gc.gigs.end_time">
-            </md-input-container>
-            <md-input-container>
-                <label>Load-In Time</label>
-                <input ng-model="gc.gigs.load_time">
-            </md-input-container>
-            <md-input-container>
-                <label>Notes</label>
-                <input ng-model="gc.gigs.details">
-            </md-input-container>
-            <div ng-controller="UserController as uc">
-                <span>Band Members: </span>
-                <span ng-repeat="user in uc.users.list" for="band_members">
-                    <md-checkbox aria-label="checkbox for {{user.first_name}}" ng-model="gc.gigs.users_id" ng-true-value="{{user.id}}">{{user.first_name}}</md-checkbox>
-                </span>
-                <br>
-            </div>
-            <input class="md-button md-raised" type="submit" name="submit" value="Add Gig" />
-        </form>
-    </div>
-</md-content>
-<md-content class="md-padding">
-    <table class="table table-striped">
-        <h2>Gig List</h2>
-
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Location</th>
-                <th>Start Time</th>
-                <th>End Time</th>
-                <!-- <th>Load-In Time</th> -->
-                <!-- <th>Song List Number</th> -->
-                <!-- <th>Details</th> -->
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="gig in gc.gigs.list">
-                <td>
-                    <span ng-hide="gig.isEditable">{{gig.date | date : "MM/dd/y" }}</span>
-                    <input ng-show="gig.isEditable" type="text" ng-model="gig.date">
-                </td>
-                <td>
-                    <span ng-hide="gig.isEditable">{{gig.location }}</span>
-                    <input ng-show="gig.isEditable" type="text" ng-model="gig.location">
-                </td>
-                <td>
-                    <span ng-hide="gig.isEditable">{{gig.start_time | date : "h:mma"}}</span>
-                    <input ng-show="gig.isEditable" type="text" ng-model="gig.start_time">
-                </td>
-                <td>
-                    <span ng-hide="gig.isEditable">{{gig.end_time | date : "h:mma"}}</span>
-                    <input ng-show="gig.isEditable" type="text" ng-model="gig.end_time">
-                </td>
-                <!-- <td>
+<div class="section">
+    <div flex layout="column" layout-align="center" layout-padding style="background-color: #FBFBFF">
+        <div>
+            <h2>Add Gig</h2>
+            <form ng-submit="gc.addGig(gc.gigs)" class="form">
+                <md-input-container>
+                    <label>Date</label>
+                    <input ng-model="gc.gigs.date">
+                </md-input-container>
+                <md-input-container>
+                    <label>Location</label>
+                    <input ng-model="gc.gigs.location">
+                </md-input-container>
+                <md-input-container>
+                    <label>Start Time</label>
+                    <input ng-model="gc.gigs.start_time">
+                </md-input-container>
+                <md-input-container>
+                    <label>End Time</label>
+                    <input ng-model="gc.gigs.end_time">
+                </md-input-container>
+                <md-input-container>
+                    <label>Load-In Time</label>
+                    <input ng-model="gc.gigs.load_time">
+                </md-input-container>
+                <md-input-container>
+                    <label>Notes</label>
+                    <input ng-model="gc.gigs.details">
+                </md-input-container>
+                <div ng-controller="UserController as uc">
+                    <span>Band Members: </span>
+                    <span ng-repeat="user in uc.users.list" for="band_members">
+                        <md-checkbox aria-label="checkbox for {{user.first_name}}" ng-model="gc.gigs.users_id" ng-true-value="{{user.id}}">{{user.first_name}}</md-checkbox>
+                    </span>
+                    <br>
+                </div>
+                <input class="md-button md-raised" type="submit" name="submit" value="Add Gig" />
+            </form>
+        </div>
+        <div layout-padding>
+            <h2>Gig List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="gig in gc.gigs.list">
+                        <td>
+                            <span ng-hide="gig.isEditable">{{gig.date | date : "MM/dd/y" }}</span>
+                            <input ng-show="gig.isEditable" type="text" ng-model="gig.date">
+                        </td>
+                        <td>
+                            <span ng-hide="gig.isEditable">{{gig.location }}</span>
+                            <input ng-show="gig.isEditable" type="text" ng-model="gig.location">
+                        </td>
+                        <td>
+                            <span ng-hide="gig.isEditable">{{gig.start_time | date : "h:mma"}}</span>
+                            <input ng-show="gig.isEditable" type="text" ng-model="gig.start_time">
+                        </td>
+                        <td>
+                            <span ng-hide="gig.isEditable">{{gig.end_time | date : "h:mma"}}</span>
+                            <input ng-show="gig.isEditable" type="text" ng-model="gig.end_time">
+                        </td>
+                        <!-- <td>
                     <span ng-hide="gig.isEditable">{{gig.load_time | date : "h:mma"}}</span>
                     <input ng-show="gig.isEditable" type="text" ng-model="gig.load_time">
                 </td> -->
-                <!-- <td>
+                        <!-- <td>
                     <span ng-hide="gig.isEditable">{{gig.gig_song_id}}</span>
                     <input ng-show="gig.isEditable" type="text" ng-model="gig.gig_song_id">
                 </td> -->
-                <td>
-                    <md-button>
-                        <a ng-href="#/gigs/{{gig.id}}">View Details</a>
-                    </md-button>
-                </td>
-                <td>
-                    <md-button class="md-fab md-mini" ng-hide="gig.isEditable" ng-click="gig.isEditable = !gig.isEditable">
-                        <i class="material-icons">mode_edit</i>
-                    </md-button>
-                    <md-button class="md-fab md-mini" ng-show="gig.isEditable" ng-click="gc.editGig(gig)">
-                        <i class="material-icons">save</i>
-                    </md-button>
-                </td>
-                <td>
-                    <md-button class="md-fab md-mini" aria-label="Delete" ng-click="gc.deleteGig(gig)">
-                        <i class="material-icons">delete_forever</i>
-                    </md-button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</md-content>
+                        <td>
+                            <md-button>
+                                <a ng-href="#/gigs/{{gig.id}}">View Details</a>
+                            </md-button>
+                        </td>
+                        <td>
+                            <md-button class="md-fab md-mini" ng-hide="gig.isEditable" ng-click="gig.isEditable = !gig.isEditable">
+                                <i class="material-icons">mode_edit</i>
+                            </md-button>
+                            <md-button class="md-fab md-mini" ng-show="gig.isEditable" ng-click="gc.editGig(gig)">
+                                <i class="material-icons">save</i>
+                            </md-button>
+                        </td>
+                        <td>
+                            <md-button class="md-fab md-mini" aria-label="Delete" ng-click="gc.deleteGig(gig)">
+                                <i class="material-icons">delete_forever</i>
+                            </md-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

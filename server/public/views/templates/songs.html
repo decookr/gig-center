@@ -50,6 +50,8 @@
                     <th>BPM</th>
                     <th>Key</th>
                     <th>Play</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -82,8 +84,8 @@
                         </span>
                         <input ng-show="song.isEditable" type="text" ng-model="song.recording_url">
                     </td>
-                    <td>
-                        <md-checkbox id="{{song.id}}" ng-show="add.addToGig" ng-model="sc.songToAdd.song_id" ng-true-value="{{song.id}}" ng-change="sc.addSongsToGig(sc.songToAdd)"
+                    <td ng-show="add.addToGig">
+                        <md-checkbox id="{{song.id}}"  ng-model="sc.songToAdd.song_id" ng-true-value="{{song.id}}" ng-change="sc.addSongsToGig(sc.songToAdd)"
                             aria-label="Add song to setlist checkbox"></md-checkbox>
                         <!-- <span ng-show="add.songAdded">Added!</span> -->
                     </td>

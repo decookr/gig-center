@@ -7,7 +7,33 @@
   text-decoration: none;
 }
 
+body {
+  background-color: white;
+}
 
+table {
+  width: 95%;
+  table-layout: fixed;
+  border-collapse: collapse;
+
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #9A9A9A;
+}
+
+tr:hover {background-color: #f5f5f5;}
+
+td {
+  /* border: 1px solid #9A9A9A; */
+
+}
+
+h2 {
+  background-color: #8BDFF7
+}
 /* body, html {
   margin: 0;
   padding: 0;
