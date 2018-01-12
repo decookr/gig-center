@@ -1,4 +1,14 @@
-body, html {
+.material-icons {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.no_underline {
+  text-decoration: none;
+}
+
+
+/* body, html {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -79,12 +89,12 @@ li a {
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
+/* li a:hover {
   text-decoration: underline;
   color: #eee;
 }
 
 .container .user {
   padding-right: 400px;
-  /* width: 700px; */
-}
+  /* width: 700px; 
+} 
