@@ -10,7 +10,6 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
             method: 'GET',
             url: '/gigs/',
         }).then(function (response) {
-            console.log('response', response.data);
             self.gigs.list = response.data;
         });
     };
@@ -21,14 +20,16 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
             method: 'GET',
             url: '/gigs/user_gig/',
         }).then(function (response) {
-            console.log('response userGigs', response.data);
             self.userGigs.list = response.data;
         });
     };
 
     //add a gig
     self.addGig = function (newGig) {
-        console.log(newGig);
+        swal({
+            text: "Gig added!",
+            icon: "success",
+          });
         $http({
             method: 'POST',
             url: '/gigs/',
@@ -47,17 +48,37 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
 
     //delete a gig
     self.deleteGig = function (gigToDelete) {
-        $http({
-            method: 'DELETE',
-            url: '/gigs/' + gigToDelete.id,
-        }).then(function (response) {
-            self.getGigs();
-        });
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Gig deleted!", {
+                        icon: "success",
+                    });
+                    $http({
+                        method: 'DELETE',
+                        url: '/gigs/' + gigToDelete.id,
+                    }).then(function (response) {
+                        self.getGigs();
+                    });
+                } else {
+                    swal("Gig not deleted");
+                }
+            });
+
     };
 
     //edit all gig details
     self.editGig = function (gigToEdit) {
-        console.log(gigToEdit);
+        swal({
+            text: "Changes saved!",
+            icon: "success",
+          });
         $http({
             method: 'PUT',
             url: '/gigs/',

@@ -14,7 +14,7 @@
                     <th>Location</th>
                     <th>Start Time</th>
                     <th>End Time</th>
-                    <th></th>
+                    <th>View Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,9 +32,9 @@
                         {{gig.gig_end | date : "h:mma"}}
                     </td>
                     <td>
-                        <md-button class="md-raised">
-                            <a ng-href="#/gigs/{{gig.gig_id}}">View Details</a>
-                        </md-button>
+                        <a class="no_underline" ng-href="#/gigs/{{gig.gig_id}}">
+                            <i class="material-icons">add_circle</i>
+                        </a>
                     </td>
                 </tr>
             </tbody>

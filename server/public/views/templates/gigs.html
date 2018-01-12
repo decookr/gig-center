@@ -47,7 +47,7 @@
                         <th>Location</th>
                         <th>Start Time</th>
                         <th>End Time</th>
-                        <th></th>
+                        <th>View Details</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -79,8 +79,10 @@
                     <input ng-show="gig.isEditable" type="text" ng-model="gig.gig_song_id">
                 </td> -->
                         <td>
-                            <md-button>
-                                <a ng-href="#/gigs/{{gig.id}}">View Details</a>
+                            <md-button class="md-fab md-mini">
+                                <a class="no_underline_gigview" ng-href="#/gigs/{{gig.id}}">
+                                    <i class="material-icons">add_circle</i>
+                                </a>
                             </md-button>
                         </td>
                         <td>

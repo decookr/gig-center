@@ -42,17 +42,36 @@ myApp.service('UserService', function ($http, $location) {
 
   //Delete a user from the database
   self.deleteUser = function (userToDelete) {
-    $http({
-      method: 'DELETE',
-      url: '/user/' + userToDelete.id,
-    }).then(function (response) {
-      self.getAllUsers();
-    });
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this user!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("User deleted!", {
+            icon: "success",
+          });
+          $http({
+            method: 'DELETE',
+            url: '/user/' + userToDelete.id,
+          }).then(function (response) {
+            self.getAllUsers();
+          });
+        } else {
+          swal("User not deleted");
+        }
+      });
   };
 
   //Edit user information
   self.editUser = function (userToEdit) {
-    console.log(userToEdit);
+    swal({
+      text: "Changes saved!",
+      icon: "success",
+    });
     $http({
       method: 'PUT',
       url: '/user/',

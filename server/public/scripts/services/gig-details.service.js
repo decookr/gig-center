@@ -19,8 +19,6 @@ myApp.service('GigDetailsService', ['$http', '$location', function ($http, $loca
 
     //GET songs for specified gig from gig_song table
     self.getGigSongs = function (gigId) {
-        console.log('gigSong id:', gigId);
-
         $http({
             method: 'GET',
             url: '/gigDetails/gigSongs',
@@ -34,17 +32,32 @@ myApp.service('GigDetailsService', ['$http', '$location', function ($http, $loca
 
     //delete a song from gig_song table
     self.deleteGigSong = function (songToDelete, gigId) {
-        $http({
-            method: 'DELETE',
-            url: '/gigDetails/' + songToDelete.id,
-        }).then(function (response) {
-            self.getGigSongs(gigId);
-        });
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Song deleted from setlist!", {
+                        icon: "success",
+                    });
+                    $http({
+                        method: 'DELETE',
+                        url: '/gigDetails/' + songToDelete.id,
+                    }).then(function (response) {
+                        self.getGigSongs(gigId);
+                    });
+                } else {
+                    swal("File not deleted");
+                }
+            });
     };
 
     //edit the order of the song list
     self.editSongOrder = function (songToEdit, gigId) {
-        console.log(songToEdit);
         $http({
             method: 'PUT',
             url: '/gigDetails/',

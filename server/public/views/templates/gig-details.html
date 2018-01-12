@@ -66,11 +66,13 @@
                             <input ng-show="song.isEditable" type="text" ng-model="song.song_order">
                         </td>
                         <td>
-                            <button ng-hide="song.isEditable" ng-click="song.isEditable = !song.isEditable">Edit Order</button>
-                            <button ng-show="song.isEditable" ng-click="gdc.editSongOrder(song, song.gig_id)">Save Order</button>
+                            <md-button ng-hide="song.isEditable" ng-click="song.isEditable = !song.isEditable">Edit Order</md-button>
+                            <md-button ng-show="song.isEditable" ng-click="gdc.editSongOrder(song, song.gig_id)">Save Order</md-button>
                         </td>
                         <td>
-                            <button ng-click="gdc.deleteGigSong(song, song.gig_id)">Delete</button>
+                            <md-button class="md-fab md-mini" aria-label="Delete" ng-click="gdc.deleteGigSong(song, song.gig_id)">
+                                <i class="material-icons">delete_forever</i>
+                            </md-button>
                         </td>
                     </tr>
                 </tbody>

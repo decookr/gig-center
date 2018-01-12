@@ -7,6 +7,11 @@
   text-decoration: none;
 }
 
+.no_underline_gigview {
+  text-decoration: none;
+  color: white;
+}
+
 body {
   background-color: white;
 }

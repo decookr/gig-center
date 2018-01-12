@@ -10,13 +10,16 @@ myApp.service('SongService', ['$http', '$location', function ($http, $location, 
             method: 'GET',
             url: '/songs/',
         }).then(function (response) {
-            console.log('response', response.data);
             self.songs.list = response.data;
         });
     };
 
     //add a song to songs table
     self.addSong = function (newSong) {
+        swal({
+            text: "Song added!",
+            icon: "success",
+        });
         $http({
             method: 'POST',
             url: '/songs/',
@@ -35,36 +38,52 @@ myApp.service('SongService', ['$http', '$location', function ($http, $location, 
 
     //delete a song from song list
     self.deleteSong = function (songToDelete) {
-        $http({
-            method: 'DELETE',
-            url: '/songs/' + songToDelete.id,
-        }).then(function (response) {
-            self.getSongs();
-        });
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Song deleted!", {
+                        icon: "success",
+                    });
+                    $http({
+                        method: 'DELETE',
+                        url: '/songs/' + songToDelete.id,
+                    }).then(function (response) {
+                        self.getSongs();
+                    });
+                } else {
+                    swal("Song not deleted");
+                }
+            });
     };
 
     //edit song information
     self.editSong = function (songToEdit) {
-        console.log(songToEdit);
+        swal({
+            text: "Changes saved!",
+            icon: "success",
+        });
         $http({
             method: 'PUT',
             url: '/songs/',
             data: songToEdit,
         }).then(function (response) {
-            console.log('response', response);
             self.getSongs();
         });
     }
 
     //add songs to a specified gig
     self.addSongsToGig = function (songsToAdd) {
-        console.log('songs to add:', songsToAdd);
         $http({
             method: 'POST',
             url: '/songs/gig-song',
             data: songsToAdd
         }).then(function (response) {
-            console.log(response);
 
             self.getSongs();
 
