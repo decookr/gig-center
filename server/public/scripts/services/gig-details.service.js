@@ -34,7 +34,7 @@ myApp.service('GigDetailsService', ['$http', '$location', function ($http, $loca
     self.deleteGigSong = function (songToDelete, gigId) {
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this file!",
+            text: "This song will be removed from the set list",
             icon: "warning",
             buttons: true,
             dangerMode: true,

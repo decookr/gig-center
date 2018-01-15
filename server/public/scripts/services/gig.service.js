@@ -42,7 +42,8 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
                 newGig.end_time = '',
                 newGig.load_time = '',
                 newGig.gig_song_id = '',
-                newGig.details = ''
+                newGig.details = '',
+                newGig.users_id = false;
         });
     }
 
