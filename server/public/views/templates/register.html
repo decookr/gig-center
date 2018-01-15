@@ -1,34 +1,40 @@
 <md-content class="md-padding">
-  <div layout="column" flex="100" layout-align="center center" >
-    <form ng-submit="lc.registerUser()">
-      <h1 class="lead">Register User</h1>
-      <h1 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
-        <div>
-          <md-input-container>
-            <label>Username:</label>
-            <input ng-model="lc.user.username">
-          </md-input-container>
+  <div class="content" layout="column" layout-padding>
+    <div flex layout-align="center center" layout-padding style="background-color: #FBFBFF">
+      <div layout="column" flex="100" layout-align="center center">
+        <div class="box">
+          <form ng-submit="lc.registerUser()">
+            <h1 class="lead">Register User</h1>
+            <h1 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
+              <div>
+                <md-input-container>
+                  <label>Username:</label>
+                  <input ng-model="lc.user.username">
+                </md-input-container>
+              </div>
+              <div>
+                <md-input-container>
+                  <label>Password:</label>
+                  <input type="password" ng-model="lc.user.password">
+                </md-input-container>
+              </div>
+              <div>
+                <md-input-container>
+                  <label>First Name:</label>
+                  <input ng-model="lc.user.first_name">
+                </md-input-container>
+              </div>
+              <div>
+                <md-input-container>
+                  <label>Last Name:</label>
+                  <input ng-model="lc.user.last_name">
+                </md-input-container>
+              </div>
+              <input style="background-color:#DB995A;" class="md-button md-raised" type="submit" name="submit" value="Register" />
+              <a href="#home">Cancel</a>
+          </form>
         </div>
-        <div>
-          <md-input-container>
-            <label>Password:</label>
-            <input type="password" ng-model="lc.user.password">
-          </md-input-container>
-        </div>
-        <div>
-          <md-input-container>
-            <label>First Name:</label>
-            <input ng-model="lc.user.first_name">
-          </md-input-container>
-        </div>
-        <div>
-          <md-input-container>
-            <label>Last Name:</label>
-            <input ng-model="lc.user.last_name">
-          </md-input-container>
-        </div>
-        <input class="md-button md-raised" type="submit" name="submit" value="Register" />
-        <a href="#home">Cancel</a>
-    </form>
+      </div>
+    </div>
   </div>
 </md-content>

@@ -60,7 +60,7 @@
                         <td>
                             <span>
                                 <a class="no_underline" ng-href="{{song.song_recording_url}}" target="_blank">
-                                    <i class="material-icons">play_circle_filled</i>
+                                    <i style="color:#DB995A;"class="material-icons">play_circle_filled</i>
                                 </a>
                             </span>
                         </td>
@@ -73,7 +73,7 @@
                             <md-button ng-show="song.isEditable" ng-click="gdc.editSongOrder(song, song.gig_id)">Save Order</md-button>
                         </td>
                         <td>
-                            <md-button class="md-fab md-mini" aria-label="Delete" ng-click="gdc.deleteGigSong(song, song.gig_id)">
+                            <md-button style="background-color:#DB995A;" class="md-fab md-mini" aria-label="Delete" ng-click="gdc.deleteGigSong(song, song.gig_id)">
                                 <i class="material-icons">delete_forever</i>
                             </md-button>
                         </td>

@@ -1,7 +1,6 @@
 .header {
   display: inline-flex;
   vertical-align: middle;
-  background-image: 
 }
 
 .material-icons {
@@ -46,6 +45,25 @@ h2 {
 
 .content {
   background-color: #BEBEBE;
+}
+
+.content-head {
+  background-color: #DB995A;
+}
+
+.navbar {
+  /* padding: 10px; */
+  /* margin: 20px; */
+  background-color: #DB995A; }
+
+md-button {
+  background-color: #DB995A;
+}
+
+.box {
+  padding: 20px;
+  border-style: solid;
+  border-color: #1F7A8C;
 }
 /* body, html {
   margin: 0;
