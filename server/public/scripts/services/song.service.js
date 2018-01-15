@@ -4,40 +4,6 @@ myApp.service('SongService', ['$http', '$location', '$mdToast', function ($http,
 
     self.songs = { list: [] };
 
-    // self.toastPosition = {
-    //     bottom: false,
-    //     top: true,
-    //     left: false,
-    //     right: true
-    // };
-
-    // self.getToastPosition = function () {
-    //     return Object.keys($scope.toastPosition)
-    //         .filter(function (pos) {
-    //             return $scope.toastPosition[pos];
-    //         })
-    //         .join(' ');
-    // };
-
-    // self.showActionToast = function () {
-    //     console.log('ate some toast');
-        
-    //     $mdToast.show(
-    //         $mdToast.simple()
-    //             .textContent('Simple Toast!')
-    //             .position(pinTo)
-    //             .hideDelay(2000)
-    //     );
-    // }
-    // vm.addSongsToGig = function () {
-    //     $mdToast.show(
-    //         $mdToast.simple()
-    //             .textContent('Simple Toast!')
-    //             .position(pinTo)
-    //             .hideDelay(2000)
-    //     );
-    // };
-
     //GET all songs
     self.getSongs = function () {
         $http({

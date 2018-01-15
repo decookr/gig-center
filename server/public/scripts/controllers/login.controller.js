@@ -38,6 +38,10 @@ myApp.controller('LoginController', function ($http, $location, UserService) {
       vm.message = "Choose a username and password!";
     } else {
       console.log('LoginController -- registerUser -- sending to server...', vm.user);
+      swal({
+        text: "User created!  Please log in.",
+        icon: "success",
+      });
       $http.post('/register', vm.user).then(function (response) {
         console.log('LoginController -- registerUser -- success');
         $location.path('/home');

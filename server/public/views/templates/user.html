@@ -1,42 +1,45 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <md-content class="md-padding">
 
-    <div layout="column" layout-padding class="container1">
+    <div class="content" layout="column" layout-padding>
         <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
         <!-- <button class="btn btn-default" ng-click="uc.userService.logout()">Log Out</button> -->
     </div>
-    <div layout="column" layout-padding style="max-width: 100%" class="container" ng-controller="GigController as gc">
-        <h2>Your Schedule</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Location</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>View Details</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="gig in gc.userGigs.list">
-                    <td>
-                        {{gig.gig_date | date : "MM/dd/y" }}
-                    </td>
-                    <td>
-                        {{gig.gig_location}}
-                    </td>
-                    <td>
-                        {{gig.gig_start | date : "h:mma"}}
-                    </td>
-                    <td>
-                        {{gig.gig_end | date : "h:mma"}}
-                    </td>
-                    <td>
-                        <a class="no_underline" ng-href="#/gigs/{{gig.gig_id}}">
-                            <i class="material-icons">add_circle</i>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="content" layout="column" layout-padding ng-controller="GigController as gc">
+        <div flex layout-align="center" layout-padding style="background-color: #FBFBFF">
+            <h2>Your Schedule</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>View Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="gig in gc.userGigs.list">
+                        <td>
+                            {{gig.gig_date | date : "MM/dd/y" }}
+                        </td>
+                        <td>
+                            {{gig.gig_location}}
+                        </td>
+                        <td>
+                            {{gig.gig_start | date : "h:mma"}}
+                        </td>
+                        <td>
+                            {{gig.gig_end | date : "h:mma"}}
+                        </td>
+                        <td>
+                            <a class="no_underline" ng-href="#/gigs/{{gig.gig_id}}">
+                                <i style="color:#DB995A;" class="material-icons">pageview</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </md-content>
