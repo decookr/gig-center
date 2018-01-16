@@ -31,14 +31,16 @@
                 <div ng-controller="UserController as uc">
                     <span>Band Members: </span>
                     <span ng-repeat="user in uc.users.list" for="band_members">
-                        <md-checkbox aria-label="checkbox for {{user.first_name}}" ng-model="gc.gigs.users_id" ng-true-value="{{user.id}}">{{user.first_name}}</md-checkbox>
+                        <md-checkbox aria-label="checkbox for {{user.first_name}}" checklist-model="gc.gigs.users_id" checklist-value="user.id">{{user.first_name}}</md-checkbox>
                     </span>
+                    user.roles {{ gc.gigs.users_id | json }}
                     <br>
                 </div>
                 <input style="background-color:#DB995A;" class="md-button md-raised" type="submit" name="submit" value="Add Gig" />
             </form>
         </div>
         <div flex layout-align="center" max-width=80% layout-padding style="background-color: #FBFBFF">
+            <md-button ng-click="gc.showAlert($event)">Test Dialog Box</md-button>
             <h2>Gig List</h2>
             <table>
                 <thead>
@@ -59,34 +61,48 @@
                         <td>
                             <md-input-container class="table_style">
                                 <span ng-hide="gig.isEditable">{{gig.date | date : "MM/dd/y" }}</span>
-                                <!-- <label>{{gig.date}}</label> -->
-                                <input ng-show="gig.isEditable" type="text" ng-model="gig.date">
+                                <input ng-show="gig.isEditable" type="text" ng-model="gig.date" aria-label="New gig date">
                             </md-input-container>
                         </td>
                         <td>
                             <md-input-container class="table_style">
                                 <span ng-hide="gig.isEditable">{{gig.location}}</span>
-                                <!-- <label>{{gig.date}}</label> -->
-                                <input ng-show="gig.isEditable" type="text" ng-model="gig.location">
+                                <input ng-show="gig.isEditable" type="text" ng-model="gig.location" aria-label="New gig location">
                             </md-input-container>
                             <!-- <span ng-hide="gig.isEditable">{{gig.location }}</span>
                             <input ng-show="gig.isEditable" type="text" ng-model="gig.location"> -->
                         </td>
                         <td>
-                            <span ng-hide="gig.isEditable">{{gig.start_time | date : "h:mma"}}</span>
-                            <input ng-show="gig.isEditable" type="text" ng-model="gig.start_time">
+                            <md-input-container class="table_style">
+                                <span ng-hide="gig.isEditable">{{gig.start_time}}</span>
+                                <input ng-show="gig.isEditable" type="text" ng-model="gig.start_time" aria-label="New gig start time">
+                            </md-input-container>
+                            <!-- <span ng-hide="gig.isEditable">{{gig.start_time | date : "h:mma"}}</span>
+                            <input ng-show="gig.isEditable" type="text" ng-model="gig.start_time"> -->
                         </td>
                         <td>
-                            <span ng-hide="gig.isEditable">{{gig.end_time | date : "h:mma"}}</span>
-                            <input ng-show="gig.isEditable" type="text" ng-model="gig.end_time">
+                            <md-input-container class="table_style">
+                                <span ng-hide="gig.isEditable">{{gig.end_time}}</span>
+                                <input ng-show="gig.isEditable" type="text" ng-model="gig.end_time" aria-label="New gig end time">
+                            </md-input-container>
+                            <!-- <span ng-hide="gig.isEditable">{{gig.end_time | date : "h:mma"}}</span>
+                            <input ng-show="gig.isEditable" type="text" ng-model="gig.end_time"> -->
                         </td>
                         <td>
-                            <span ng-hide="gig.isEditable">{{gig.load_time | date : "h:mma"}}</span>
-                            <input ng-show="gig.isEditable" type="text" ng-model="gig.load_time">
+                            <md-input-container class="table_style">
+                                <span ng-hide="gig.isEditable">{{gig.load_time}}</span>
+                                <input ng-show="gig.isEditable" type="text" ng-model="gig.load_time" aria-label="New gig load-in time">
+                            </md-input-container>
+                            <!-- <span ng-hide="gig.isEditable">{{gig.load_time | date : "h:mma"}}</span>
+                            <input ng-show="gig.isEditable" type="text" ng-model="gig.load_time"> -->
                         </td>
                         <td>
-                            <span ng-hide="gig.isEditable">{{gig.details}}</span>
-                            <input ng-show="gig.isEditable" type="text" ng-model="gig.details">
+                            <md-input-container class="table_style">
+                                <span ng-hide="gig.isEditable">{{gig.details}}</span>
+                                <input ng-show="gig.isEditable" type="text" ng-model="gig.details" aria-label="New gig details">
+                            </md-input-container>
+                            <!-- <span ng-hide="gig.isEditable">{{gig.details}}</span>
+                            <input ng-show="gig.isEditable" type="text" ng-model="gig.details"> -->
                         </td>
                         <!-- <td>
                             <span ng-hide="gig.isEditable">{{gig.gig_song_id}}</span>

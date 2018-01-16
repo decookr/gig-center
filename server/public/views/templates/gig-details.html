@@ -21,7 +21,8 @@
         <div flex layout-align="center" max-width=80% layout-padding style="background-color: #FBFBFF">
             <table>
                 <h2>Set List</h2>
-
+                <!-- <md-button ng-hide="order.isEditable" ng-click="order.isEditable = !order.isEditable">Edit Order</md-button>
+                <md-button ng-show="order.isEditable" ng-click="order.isEditable = !order.isEditable">Save Order</md-button> -->
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -30,8 +31,10 @@
                         <th>BPM</th>
                         <th>Key</th>
                         <th>Play</th>
-                        <th>Song Order</th>
-                        <th></th>
+                        <th>
+                            <md-button class="md-raised" ng-hide="order.isEditable" ng-click="order.isEditable = !order.isEditable">Edit Order</md-button>
+                            <md-button class="md-raised" ng-show="order.isEditable" ng-click="order.isEditable = !order.isEditable">Done!</md-button>
+                        </th>
                         <th></th>
                     </tr>
                 </thead>
@@ -65,13 +68,13 @@
                             </span>
                         </td>
                         <td>
-                            <span ng-hide="song.isEditable">{{song.song_order}}</span>
-                            <input ng-show="song.isEditable" type="text" ng-model="song.song_order">
+                            <span ng-hide="order.isEditable">{{song.song_order}}</span>
+                            <input ng-show="order.isEditable" type="text" ng-model="song.song_order" ng-change="gdc.editSongOrder(song, song.gig_id)">
                         </td>
-                        <td>
+                        <!-- <td>
                             <md-button ng-hide="song.isEditable" ng-click="song.isEditable = !song.isEditable">Edit Order</md-button>
                             <md-button ng-show="song.isEditable" ng-click="gdc.editSongOrder(song, song.gig_id)">Save Order</md-button>
-                        </td>
+                        </td> -->
                         <td>
                             <md-button style="background-color:#DB995A;" class="md-fab md-mini" aria-label="Delete" ng-click="gdc.deleteGigSong(song, song.gig_id)">
                                 <i class="material-icons">delete_forever</i>

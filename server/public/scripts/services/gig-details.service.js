@@ -58,6 +58,8 @@ myApp.service('GigDetailsService', ['$http', '$location', function ($http, $loca
 
     //edit the order of the song list
     self.editSongOrder = function (songToEdit, gigId) {
+        console.log(songToEdit);
+        
         $http({
             method: 'PUT',
             url: '/gigDetails/',

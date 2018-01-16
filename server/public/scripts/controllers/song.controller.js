@@ -8,9 +8,7 @@ myApp.controller('SongController', function (SongService, $mdToast) {
     vm.addSongsToGig = SongService.addSongsToGig;
     // vm.showActionToast = SongService.showActionToast;
 
-    vm.showActionToast = function (song) {
-        console.log('ate some toast');
-        
+    vm.showActionToast = function (song) {        
         $mdToast.show(
             $mdToast.simple()
                 .textContent(song + ' added to set list!')

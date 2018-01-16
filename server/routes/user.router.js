@@ -52,22 +52,27 @@ router.get('/all', function (req, res) {
 // Delete a user
 router.delete('/:id', function (req, res) {
   var userToRemove = req.params.id;
-  pool.connect(function (errorConnectingToDatabase, client, done) {
-    if (errorConnectingToDatabase) {
-      console.log('Error connecting to database', errorConnectingToDatabase);
-      res.sendStatus(500);
-    } else {
-      client.query(`DELETE FROM users WHERE id=$1;`, [userToRemove], function (errorMakingQuery, result) {
-        done();
-        if (errorMakingQuery) {
-          console.log('Error making query', errorMakingQuery);
-          res.sendStatus(500);
-        } else {
-          res.sendStatus(200);
-        }
-      });
-    }
-  });
+  if (req.isAuthenticated()) {
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+      if (errorConnectingToDatabase) {
+        console.log('Error connecting to database', errorConnectingToDatabase);
+        res.sendStatus(500);
+      } else {
+        client.query(`DELETE FROM users WHERE id=$1;`, [userToRemove], function (errorMakingQuery, result) {
+          done();
+          if (errorMakingQuery) {
+            console.log('Error making query', errorMakingQuery);
+            res.sendStatus(500);
+          } else {
+            res.sendStatus(200);
+          }
+        });
+      }
+    });
+  }
+else {
+  res.sendStatus(403);
+}
 });
 
 // Edit user information

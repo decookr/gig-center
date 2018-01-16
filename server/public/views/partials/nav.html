@@ -1,6 +1,6 @@
-<div class="navbar" >
+<div class="navbar">
   <md-content class="md-padding">
-    <md-nav-bar  md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
       <md-nav-item md-nav-href="#user" name="home">
         <i class="material-icons">home</i> Home</a>
       </md-nav-item>
@@ -9,6 +9,11 @@
       </md-nav-item>
       <md-nav-item md-nav-href="#gigs" name="gigs">
         <i class="material-icons">event</i> Gigs</a>
+        <!-- <div class="sub-menu" ng-animate="'animate'" >
+            <md-menu-item ng-controller="GigController as gc" ng-repeat="gig in gc.gigs.list" >
+              <p>{{gig.location}}</p>
+            </md-menu-item>
+          </div> -->
       </md-nav-item>
       <md-nav-item md-nav-href="#/songs" name="songs">
         <i class="material-icons">queue_music</i> Songs</a>
