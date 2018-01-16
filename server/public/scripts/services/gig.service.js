@@ -3,7 +3,7 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
     var self = this;
     self.gigs = { list: [] };
     self.userGigs = { list: [] };
-    
+
     //GET all gigs
     self.getGigs = function () {
         $http({
@@ -25,31 +25,71 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
     };
 
     //add a gig
-    self.addGig = function (newGig) {
-        console.log('users array', newGig.users_id);
-        console.log('users object',newGig);
-        
-        
-        // swal({
-        //     text: "Gig added!",
-        //     icon: "success",
-        //   });
-        // $http({
-        //     method: 'POST',
-        //     url: '/gigs/',
-        //     data: newGig,
-        // }).then(function (response) {
-        //     self.getGigs();
-        //     newGig.date = '',
-        //         newGig.location = '',
-        //         newGig.start_time = '',
-        //         newGig.end_time = '',
-        //         newGig.load_time = '',
-        //         newGig.gig_song_id = '',
-        //         newGig.details = '',
-        //         newGig.users_id = false;
-        // });
+    self.addGig = function (newGig, users) {
+        console.log('users object', newGig);
+        swal({
+            text: "Gig added!",
+            icon: "success",
+        });
+        $http({
+            method: 'POST',
+            url: '/gigs/add-gig',
+            data: newGig,
+        }).then(function (response) {
+            self.getGigs();
+            newGig.date = '',
+                newGig.location = '',
+                newGig.start_time = '',
+                newGig.end_time = '',
+                newGig.load_time = '',
+                newGig.gig_song_id = '',
+                newGig.details = '',
+            // console.log('gig id', id);
+            console.log('users id', users);
+            console.log(response.data.rows[0]);
+            var gigId = response.data.rows[0];
+            $http({
+                method: 'POST',
+                url: '/gigs/assign-users',
+                data: {
+                    users,
+                    gigId
+                }
+            }).then(function (response) {
+                self.getGigs();
+                users.users_id = false;
+            });
+
+        });
+
     }
+
+    // //assign users
+    // self.addGig = function (newGig) {
+    //     console.log('users array', newGig.users_id);
+    //     console.log('users object', newGig);
+
+
+    //     swal({
+    //         text: "Gig added!",
+    //         icon: "success",
+    //     });
+    //     $http({
+    //         method: 'POST',
+    //         url: '/gigs/',
+    //         data: newGig,
+    //     }).then(function (response) {
+    //         self.getGigs();
+    //         newGig.date = '',
+    //             newGig.location = '',
+    //             newGig.start_time = '',
+    //             newGig.end_time = '',
+    //             newGig.load_time = '',
+    //             newGig.gig_song_id = '',
+    //             newGig.details = '',
+    //             newGig.users_id = false;
+    //     });
+    // };
 
     //delete a gig
     self.deleteGig = function (gigToDelete) {
@@ -83,7 +123,7 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
         swal({
             text: "Changes saved!",
             icon: "success",
-          });
+        });
         $http({
             method: 'PUT',
             url: '/gigs/',
