@@ -22,10 +22,9 @@ router.get('/', function (req, res) {
     });
 });
 
-//GET a user's assigned gigs - NEW ATTEMPT AT USER_GIG ASSIGN
+//GET a user's assigned gigs
 router.get('/user_gig', function (req, res) {
     console.log(req.params);
-
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
             console.log('error', errorConnectingToDatabase);
@@ -48,34 +47,6 @@ router.get('/user_gig', function (req, res) {
         }
     });
 });
-
-//GET a user's assigned gigs - ORIGINAL FUNCTION BEFORE USER_GIG CHANGE
-router.get('/user_gig', function (req, res) {
-    console.log(req.params);
-
-    pool.connect(function (errorConnectingToDatabase, client, done) {
-        if (errorConnectingToDatabase) {
-            console.log('error', errorConnectingToDatabase);
-            res.sendStatus(500);
-        } else {
-            client.query(`SELECT users.id, users.first_name AS member_list, gig.id AS gig_id, gig.location AS gig_location, 
-            gig.date AS gig_date, gig.start_time AS gig_start, gig.end_time AS gig_end FROM user_gig
-            JOIN "users" ON users.id = user_gig.users_id
-            JOIN "gig" ON gig.id = user_gig.gig_id
-            WHERE user_gig.users_id=$1
-            ORDER BY date;`, [req.user.id], function (errorMakingDatabaseQuery, result) {
-                    done();
-                    if (errorMakingDatabaseQuery) {
-                        console.log('error', errorMakingDatabaseQuery);
-                        res.sendStatus(500);
-                    } else {
-                        res.send(result.rows);
-                    }
-                });
-        }
-    });
-});
-
 
 //add a gig to gig table 
 router.post('/add-gig', function (req, res) {
@@ -115,43 +86,17 @@ router.post('/assign-users', function (req, res) {
             var userGigPromises = [];
             for (let i = 0; i < userToAdd.length; i++) {
                 var newUserGigPromise = client.query(`INSERT INTO user_gig (users_id, gig_id) VALUES ($1, $2);`, [userToAdd[i], gigId]);
-                userGigPromises.push(newUserGigPromise);         
+                userGigPromises.push(newUserGigPromise);
             }
         }
         Promise.all(userGigPromises).then(function (resultOfAllPromises) {
-                res.sendStatus(201);
-            }).catch(function (err) {
-                console.log('Promise.all did not work!', err);
-                res.sendStatus(500);
-            })
+            res.sendStatus(201);
+        }).catch(function (err) {
+            console.log('Promise.all did not work!', err);
+            res.sendStatus(500);
+        })
     });
 })
-
-// //add a gig to gig table and assign users to a gig in user_gig table - ORIGINAL
-// router.post('/', function (req, res) {
-//     console.log(req.body);
-//     var gig = req.body;
-//     pool.connect(function (errorConnectingToDatabase, client, done) {
-//         if (errorConnectingToDatabase) {
-//             console.log('Error connecting to database', errorConnectingToDatabase);
-//             res.sendStatus(500);
-//         } else {
-// client.query(`WITH new_gig AS (INSERT INTO gig (date, location, start_time, end_time, load_time, gig_song_id, details)
-// VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id)
-// INSERT INTO user_gig (users_id, gig_id)
-// VALUES ($8, (SELECT id FROM new_gig));`, [gig.date, gig.location, gig.start_time, gig.end_time, gig.load_time, gig.gig_song_id, gig.details, gig.users_id],
-//     function (errorMakingQuery, result) {
-//                     done();
-//                     if (errorMakingQuery) {
-//                         console.log('Error making query', errorMakingQuery);
-//                         res.sendStatus(500);
-//                     } else {
-//                         res.sendStatus(201);
-//                     }
-//                 });
-//         }
-//     });
-// })
 
 // Delete a gig from gig table
 router.delete('/:id', function (req, res) {
