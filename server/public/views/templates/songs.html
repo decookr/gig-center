@@ -35,16 +35,22 @@
         </div>
         <div flex layout-align="center" layout-padding style="background-color: #FBFBFF">
             <h2>Song List</h2>
-            <div>
-                
-                <md-input-container layout md-padding flex="30" layout-align="center center">
-                    <label>                        <i class="material-icons">search</i>
-                        Search for a song </label>
-                    <input ng-model="searchText">
-                </md-input-container>
+            <div layout="row">
+                <div flex=50>
+                    <md-input-container layout md-padding flex="30" layout-align="center center">
+                        <label>
+                            <i class="material-icons">search</i>
+                            Search for a song </label>
+                        <input ng-model="searchText">
+                    </md-input-container>
+                </div>
+                <div flex=50>
+                    <md-button style="background-color:#e5bb2f;" class="md-raised" ng-hide="add.addToGig" ng-click="add.addToGig = !add.addToGig">Create A Setlist</md-button>
+                    <md-button style="background-color:#e5bb2f;" class="md-raised" ng-show="add.addToGig" ng-click="add.addToGig = !add.addToGig">Done Adding Songs</md-button>
+
+                </div>
             </div>
-            <md-button style="background-color:#e5bb2f;" class="md-raised" ng-hide="add.addToGig" ng-click="add.addToGig = !add.addToGig">Create A Setlist</md-button>
-            <md-button style="background-color:#e5bb2f;" class="md-raised" ng-show="add.addToGig" ng-click="add.addToGig = !add.addToGig">Done Adding Songs</md-button>
+
             <div layout="column" layout-align="center center" ng-controller="GigController as gc">
                 <md-select placeholder="Select a gig" ng-show="add.addToGig" ng-model="sc.songToAdd.gig_id" name="gig" id="gigLocation">
                     <md-option ng-repeat="gig in gc.gigs.list" ng-value="{{gig.id}}">{{gig.location}}</md-option>
