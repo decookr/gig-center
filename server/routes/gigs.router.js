@@ -105,33 +105,25 @@ router.post('/add-gig', function (req, res) {
 
 //assign users to a gig in user_gig table
 router.post('/assign-users', function (req, res) {
-    console.log(req.body.users);
-    console.log(req.body.gigId);
-
-
     var userToAdd = req.body.users.users_id;
     var gigId = req.body.gigId.gig_id;
-    console.log(userToAdd);
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
             console.log('Error connecting to database', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
+            var userGigPromises = [];
             for (let i = 0; i < userToAdd.length; i++) {
-                client.query(`INSERT INTO user_gig (users_id, gig_id) VALUES ($1, $2);`, [userToAdd[i], gigId],
-                    function (errorMakingQuery, result) {
-                        done();
-                        if (errorMakingQuery) {
-                            console.log('Error making query', errorMakingQuery);
-                            res.sendStatus(500);
-                        }
-                        else {
-                            // res.sendStatus(201);
-                        }
-                    });
+                var newUserGigPromise = client.query(`INSERT INTO user_gig (users_id, gig_id) VALUES ($1, $2);`, [userToAdd[i], gigId]);
+                userGigPromises.push(newUserGigPromise);         
             }
-            
         }
+        Promise.all(userGigPromises).then(function (resultOfAllPromises) {
+                res.sendStatus(201);
+            }).catch(function (err) {
+                console.log('Promise.all did not work!', err);
+                res.sendStatus(500);
+            })
     });
 })
 
