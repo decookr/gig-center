@@ -35,7 +35,7 @@
                     </span>
                     <br>
                 </div>
-                <input style="background-color:#DB995A;" class="md-button md-raised" type="submit" name="submit" value="Add Gig" />
+                <input style="background-color:#e5bb2f;" class="md-button md-raised" type="submit" name="submit" value="Add Gig" />
             </form>
         </div>
         <div flex layout-align="center" max-width=80% layout-padding style="background-color: #FBFBFF">
@@ -107,22 +107,22 @@
                             <input ng-show="gig.isEditable" type="text" ng-model="gig.gig_song_id">
                         </td> -->
                         <td>
-                            <md-button style="background-color:#DB995A;" class="md-fab md-mini">
+                            <md-button style="background-color:#e5bb2f;" class="md-fab md-mini">
                                 <a class="no_underline_gigview" ng-href="#/gigs/{{gig.id}}">
                                     <i class="material-icons">pageview</i>
                                 </a>
                             </md-button>
                         </td>
                         <td>
-                            <md-button style="background-color:#DB995A;" class="md-fab md-mini" ng-hide="gig.isEditable" ng-click="gig.isEditable = !gig.isEditable">
+                            <md-button style="background-color:#e5bb2f;" class="md-fab md-mini" ng-hide="gig.isEditable" ng-click="gig.isEditable = !gig.isEditable">
                                 <i class="material-icons">mode_edit</i>
                             </md-button>
-                            <md-button style="background-color:#DB995AFFC15E;" class="md-fab md-mini" ng-show="gig.isEditable" ng-click="gc.editGig(gig)">
+                            <md-button style="background-color:#e5bb2fFFC15E;" class="md-fab md-mini" ng-show="gig.isEditable" ng-click="gc.editGig(gig)">
                                 <i class="material-icons">save</i>
                             </md-button>
                         </td>
                         <td>
-                            <md-button style="background-color:#DB995A;" class="md-fab md-mini" aria-label="Delete" ng-click="gc.deleteGig(gig)">
+                            <md-button style="background-color:#e5bb2f;" class="md-fab md-mini" aria-label="Delete" ng-click="gc.deleteGig(gig)">
                                 <i class="material-icons">delete_forever</i>
                             </md-button>
                         </td>

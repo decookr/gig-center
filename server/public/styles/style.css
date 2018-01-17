@@ -18,8 +18,10 @@
 }
 
 body {
-  background-color: #717171"
-  ;
+  background-color: #717171;
+  padding: 3%;
+  background-image: url("../img/white-texture-seamless-.jpg ");
+  background-size: 500px 120px;
 }
 
  .table_style {
@@ -46,31 +48,33 @@ th, td {
 tr:hover {background-color: #f5f5f5;}
 
 h2 {
-  background-color: #1F7A8C;
+  background-color: #2a38bb;
   color: whitesmoke;
 }
 
 .content {
-  background-color: #BEBEBE;
+  background-color: #e5bb2f;
+
+
 }
 
 .content-head {
-  background-color: #DB995A;
+  background-color: #e5bb2f;
 }
 
 .navbar {
   /* padding: 10px; */
   /* margin: 20px; */
-  background-color: #DB995A; }
+  background-color: #e5bb2f; }
 
 md-button {
-  background-color: #DB995A;
+  background-color: #e5bb2f;
 }
 
 .box {
   padding: 20px;
   border-style: solid;
-  border-color: #1F7A8C;
+  border-color: #283cf7;
 }
 /* body, html {
   margin: 0;

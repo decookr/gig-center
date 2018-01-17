@@ -125,13 +125,12 @@ router.post('/assign-users', function (req, res) {
                             console.log('Error making query', errorMakingQuery);
                             res.sendStatus(500);
                         }
-                        // else {
-                        //     res.sendStatus(201);
-                        // }
+                        else {
+                            // res.sendStatus(201);
+                        }
                     });
-
-
             }
+            
         }
     });
 })

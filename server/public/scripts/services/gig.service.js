@@ -56,6 +56,8 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
                     gigId
                 }
             }).then(function (response) {
+                console.log(response);
+                
                 self.getGigs();
                 users.users_id = false;
             });
