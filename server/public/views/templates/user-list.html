@@ -1,5 +1,5 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<md-content class="md-padding">
+<!-- <md-content class="md-padding"> -->
     <div class="content" layout="column" layout-padding>
         <div flex layout-align="center" layout-padding style="background-color: #FBFBFF">
             <h2 flex>Users</h2>
@@ -28,15 +28,15 @@
                             <input ng-show="user.isEditable" type="text" ng-model="user.username">
                         </td>
                         <td>
-                            <md-button style="background-color:#e5bb2f;" class="md-fab md-mini" ng-hide="user.isEditable" ng-click="user.isEditable = !user.isEditable">
+                            <md-button style="background-color:#c1e036;" class="md-fab md-mini" ng-hide="user.isEditable" ng-click="user.isEditable = !user.isEditable">
                                 <i class="material-icons">mode_edit</i>
                             </md-button>
-                            <md-button style="background-color:#e5bb2f;" class="md-fab md-mini" ng-show="user.isEditable" ng-click="uc.editUser(user)">
+                            <md-button style="background-color:#c1e036;" class="md-fab md-mini" ng-show="user.isEditable" ng-click="uc.editUser(user)">
                                 <i class="material-icons">save</i>
                             </md-button>
                         </td>
                         <td>
-                            <md-button style="background-color:#e5bb2f;" class="md-fab md-mini" aria-label="Delete" ng-click="uc.deleteUser(user)">
+                            <md-button style="background-color:#c1e036;" class="md-fab md-mini" aria-label="Delete" ng-click="uc.deleteUser(user)">
                                 <i class="material-icons">delete_forever</i>
                             </md-button>
                             <!-- <md-button class="md-raised" ng-click="uc.deleteUser(user)">Delete</md-button> -->
@@ -45,8 +45,8 @@
                 </tbody>
             </table>
             <a href="#register">
-                <md-button style="background-color:#e5bb2f;" class="md-raised">Add New User</md-button>
+                <md-button style="background-color:#c1e036;" class="md-raised">Add New User</md-button>
             </a>
         </div>
     </div>
-</md-content>
+<!-- </md-content> -->

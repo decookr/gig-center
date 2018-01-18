@@ -1,5 +1,5 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<md-content class="md-padding">
+<!-- <md-content class="md-padding"> -->
     <div class="content" layout="column" layout-padding>
         <div flex layout-align="center" layout-padding style="background-color: #FBFBFF">
             <h2>Gig Details</h2>
@@ -21,7 +21,12 @@
         <div flex layout-align="center" max-width=80% layout-padding style="background-color: #FBFBFF">
             <table>
                 <h2>Set List</h2>
-                <!-- <md-button ng-hide="order.isEditable" ng-click="order.isEditable = !order.isEditable">Edit Order</md-button>
+                        <a class="no_underline_gigview" ng-href="#/songs">
+                            <md-button style="background-color:#c1e036;" class="md-raised">
+                            <i class="material-icons">music_note</i>
+                            <span>Add Songs</span>
+                        </a>
+                    </md-button>                <!-- <md-button ng-hide="order.isEditable" ng-click="order.isEditable = !order.isEditable">Edit Order</md-button>
                 <md-button ng-show="order.isEditable" ng-click="order.isEditable = !order.isEditable">Save Order</md-button> -->
                 <thead>
                     <tr>
@@ -63,7 +68,7 @@
                         <td>
                             <span>
                                 <a class="no_underline" ng-href="{{song.song_recording_url}}" target="_blank">
-                                    <i style="color:#e5bb2f;" class="material-icons">play_circle_filled</i>
+                                    <i style="color:#c1e036;" class="material-icons">play_circle_filled</i>
                                 </a>
                             </span>
                         </td>
@@ -76,7 +81,7 @@
                             <md-button ng-show="song.isEditable" ng-click="gdc.editSongOrder(song, song.gig_id)">Save Order</md-button>
                         </td> -->
                         <td>
-                            <md-button style="background-color:#e5bb2f;" class="md-fab md-mini" aria-label="Delete" ng-click="gdc.deleteGigSong(song, song.gig_id)">
+                            <md-button style="background-color:#c1e036;" class="md-fab md-mini" aria-label="Delete" ng-click="gdc.deleteGigSong(song, song.gig_id)">
                                 <i class="material-icons">delete_forever</i>
                             </md-button>
                         </td>
@@ -86,4 +91,4 @@
         </div>
     </div>
     </div>
-</md-content>
+<!-- </md-content> -->
