@@ -22,7 +22,10 @@ body {
   padding: 3%;
   /* background-image: url("../img/boxes.jpg "); */
   background-image: url("../img/white-texture-seamless-.jpg ");
-  background-size: 600px 300px;
+  background-size: 600px 300px, cover;
+  background-attachment: fixed;
+  background-repeat: repeat;
+
 }
 
  .table_style {
@@ -47,11 +50,11 @@ th, td {
 }
 
 tr:hover {
-  background-color: #2a39bb38;
+  background-color: #3e3f4262;
 }
 
 h2 {
-  background-color: #2a38bb;
+  background-color: #3e3f42;
   color: whitesmoke;
 }
 
@@ -77,95 +80,5 @@ md-button {
 .box {
   padding: 20px;
   border-style: solid;
-  border-color: #283cf7;
+  border-color: #3e3f42;
 }
-/* body, html {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  font-size: 14px;
-  background-color: #FBFBFF;
-}
-
-.instructions .container h1 {
-  font-size: 32px;
-  font-weight: 600;
-}
-
-.instructions {
-  background-color: #0B4F6C;
-  color: #DDDDDD;
-  padding: 30px;
-}
-
-#entryForm {
-  margin-top: 14px;
-}
-
-#container {
-  margin-top: 10px;
-}
-
-.container p{
-  margin-top : 14px;
-}
-
-.headerbg {
-  background-color: #03161E;
-}
-
-.message {
-  padding: 10px 0;
-}
-
-.message p {
-  margin-left: 10px;
-}
-
-.message:nth-child(odd) {
-   background-color: #eeeeee;
-}
-
-.message:nth-child(even) {
-  background-color: #f8f8f8;
-}
-
-.btn-danger{
-  margin-left: 10px;
-}
-
-.navbar {
-  background-color: #757575;
-  width: 100%;
-  border-radius: 0px;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-/* li a:hover {
-  text-decoration: underline;
-  color: #eee;
-}
-
-.container .user {
-  padding-right: 400px;
-  /* width: 700px; 
-} 

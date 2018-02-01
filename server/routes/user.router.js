@@ -70,30 +70,30 @@ router.delete('/:id', function (req, res) {
       }
     });
   }
-else {
-  res.sendStatus(403);
-}
+  else {
+    res.sendStatus(403);
+  }
 });
 
 // Edit user information
-router.put('/', function (req,res){
+router.put('/', function (req, res) {
   var userToEdit = req.body;
-  pool.connect(function(errorConnectingToDatabase, client, done){
-      if(errorConnectingToDatabase){
-          console.log('Error connecting to database', errorConnectingToDatabase);
-          res.sendStatus(500);
-      } else {
-          client.query(`UPDATE users SET username=$1, first_name=$2, last_name=$3 
-          WHERE "id" = $4;`, [userToEdit.username, userToEdit.first_name, userToEdit.last_name, userToEdit.id], function(errorMakingQuery, result){
-              done();
-              if(errorMakingQuery){
-                  console.log('Error making query', errorMakingQuery);
-                  res.sendStatus(500);
-              } else{
-                  res.sendStatus(200);
-              }
-          });
-      }
+  pool.connect(function (errorConnectingToDatabase, client, done) {
+    if (errorConnectingToDatabase) {
+      console.log('Error connecting to database', errorConnectingToDatabase);
+      res.sendStatus(500);
+    } else {
+      client.query(`UPDATE users SET username=$1, first_name=$2, last_name=$3 
+          WHERE "id" = $4;`, [userToEdit.username, userToEdit.first_name, userToEdit.last_name, userToEdit.id], function (errorMakingQuery, result) {
+          done();
+          if (errorMakingQuery) {
+            console.log('Error making query', errorMakingQuery);
+            res.sendStatus(500);
+          } else {
+            res.sendStatus(200);
+          }
+        });
+    }
   });
 })
 

@@ -13,7 +13,7 @@ var gigRouter = require('./routes/gigs.router');
 var songRouter = require('./routes/songs.router');
 var gigDetailsRouter = require('./routes/gig-details.router')
 
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 3000;
 
 // Body parser middleware
 app.use(bodyParser.json());
