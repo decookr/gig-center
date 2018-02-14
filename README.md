@@ -22,7 +22,8 @@ CREATE TABLE "gig_center" (
 
 ## Screen Shots
 
-[![Schedule View](public/img/schedule.png)]
+![Schedule View](./screen-shots/schedule.png "Landing Page Header")
+
 
 ## Documentation
 
