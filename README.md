@@ -23,6 +23,8 @@ CREATE TABLE "gig_center" (
 ## Screen Shots
 
 ![Schedule View](./screen-shots/schedule.png "Landing Page Header")
+![Gig View](./screen-shots/gigs.png "Gigs Page Header")
+![Song View](./screen-shots/songs.png "Songs Page Header")
 
 
 ## Documentation
