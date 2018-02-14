@@ -8,48 +8,35 @@ See a live version of the app at https://gig-center.herokuapp.com/#/home
 
 PostgreSQL, Express.js, AngularJS, Node.js, and AngularJS Material
 
-### Installing
+# Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+# Prerequisites
+- Node.js
+- npm
+- PostgreSQL
+- homebrew
+
+# Installing
 Steps to get the development environment running.
 
-```sql
-CREATE TABLE "gig_center" (
-  "id" serial primary key,
-  "username" varchar(80) not null UNIQUE,
-  "password" varchar(240) not null
-);
-```
+1. npm install
+2. Create SQL database gig_center
+3. Execute SQL query in database.sql to create database structure.
+4. npm start
 
 ## Screen Shots
 
+Schedule View
 ![Schedule View](./screen-shots/schedule.png "Landing Page Header")
+
+Gig View
 ![Gig View](./screen-shots/gigs.png "Gigs Page Header")
+
+Song View
 ![Song View](./screen-shots/songs.png "Songs Page Header")
 
-
-## Documentation
-
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
-
-### Completed Features
-
-High level list of items completed.
-
-- [x] Feature a
-- [x] Feature b
-
-### Next Steps
-
-Features that you would like to add at some point in the future.
-
-- [ ] Feature c
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
 ## Author
-
 * Ryan DeCook
 
 
