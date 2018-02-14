@@ -28,7 +28,7 @@ CREATE TABLE "users" (
 
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
+[![Schedule View](img/schedule.png)]
 
 ## Documentation
 
