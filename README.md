@@ -9,7 +9,7 @@ See a live version of the app at https://gig-center.herokuapp.com/#/home
 PostgreSQL, Express.js, AngularJS, Node.js, and AngularJS Material
 
 # Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 # Prerequisites
 - Node.js
