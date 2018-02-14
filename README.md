@@ -1,32 +1,26 @@
-# Name of Project
+# Gig Center
 
-One Paragraph of project description goes here. Link to the live version of the app if it's hosted on Heroku.
+A full stack web application to help bands and musicians manage details for upcoming gigs. Solves the problem of having to sort through and locate pieces of information in multiple locations (long email chains, text messages, etc.). Users can log into the app and immediately see the events they’ve been scheduled for. They can select a specific gig to view the details. Gigs can also be added and specific band members can be scheduled for that gig. Song lists can also be added to a gig from a database of songs. 
+
+See a live version of the app at https://gig-center.herokuapp.com/#/home 
 
 ## Built With
 
-List technologies and frameworks here
-
-### Prerequisites
-
-Link to software that is required to install the app (e.g. node).
-
-- [Node.js](https://nodejs.org/en/)
-- List other prerequisites here
-
+PostgreSQL, Express.js, AngularJS, Node.js, and AngularJS Material
 
 ### Installing
 
 Steps to get the development environment running.
 
 ```sql
-CREATE TABLE "users" (
+CREATE TABLE "gig_center" (
   "id" serial primary key,
   "username" varchar(80) not null UNIQUE,
   "password" varchar(240) not null
 );
 ```
 
-## Screen Shot
+## Screen Shots
 
 [![Schedule View](img/schedule.png)]
 
@@ -51,11 +45,8 @@ Features that you would like to add at some point in the future.
 
 Add additional notes about how to deploy this on a live system
 
-## Authors
+## Author
 
-* Name of author(s)
+* Ryan DeCook
 
 
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
