@@ -31,22 +31,27 @@ router.get('/logout', function (req, res) {
 
 //gets a list of all users to display on User List view
 router.get('/all', function (req, res) {
-  pool.connect(function (errorConnectingToDatabase, client, done) {
-    if (errorConnectingToDatabase) {
-      console.log('error', errorConnectingToDatabase);
-      res.sendStatus(500);
-    } else {
-      client.query('SELECT * from users ORDER BY first_name', function (errorMakingDatabaseQuery, result) {
-        done();
-        if (errorMakingDatabaseQuery) {
-          console.log('error', errorMakingDatabaseQuery);
-          res.sendStatus(500);
-        } else {
-          res.send(result.rows);
-        }
-      });
-    }
-  });
+  if (req.isAuthenticated()) {
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+      if (errorConnectingToDatabase) {
+        console.log('error', errorConnectingToDatabase);
+        res.sendStatus(500);
+      } else {
+        client.query('SELECT * from users ORDER BY first_name', function (errorMakingDatabaseQuery, result) {
+          done();
+          if (errorMakingDatabaseQuery) {
+            console.log('error', errorMakingDatabaseQuery);
+            res.sendStatus(500);
+          } else {
+            res.send(result.rows);
+          }
+        });
+      }
+    });
+  }
+  else {
+    res.sendStatus(403);
+  }
 });
 
 // Delete a user
@@ -78,23 +83,28 @@ router.delete('/:id', function (req, res) {
 // Edit user information
 router.put('/', function (req, res) {
   var userToEdit = req.body;
-  pool.connect(function (errorConnectingToDatabase, client, done) {
-    if (errorConnectingToDatabase) {
-      console.log('Error connecting to database', errorConnectingToDatabase);
-      res.sendStatus(500);
-    } else {
-      client.query(`UPDATE users SET username=$1, first_name=$2, last_name=$3 
+  if (req.isAuthenticated()) {
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+      if (errorConnectingToDatabase) {
+        console.log('Error connecting to database', errorConnectingToDatabase);
+        res.sendStatus(500);
+      } else {
+        client.query(`UPDATE users SET username=$1, first_name=$2, last_name=$3 
           WHERE "id" = $4;`, [userToEdit.username, userToEdit.first_name, userToEdit.last_name, userToEdit.id], function (errorMakingQuery, result) {
-          done();
-          if (errorMakingQuery) {
-            console.log('Error making query', errorMakingQuery);
-            res.sendStatus(500);
-          } else {
-            res.sendStatus(200);
-          }
-        });
-    }
-  });
+            done();
+            if (errorMakingQuery) {
+              console.log('Error making query', errorMakingQuery);
+              res.sendStatus(500);
+            } else {
+              res.sendStatus(200);
+            }
+          });
+      }
+    });
+  }
+  else {
+    res.sendStatus(403);
+  }
 })
 
 module.exports = router;
