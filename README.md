@@ -22,7 +22,7 @@ CREATE TABLE "gig_center" (
 
 ## Screen Shots
 
-[![Schedule View](img/schedule.png)]
+[![Schedule View](public/img/schedule.png)]
 
 ## Documentation
 
