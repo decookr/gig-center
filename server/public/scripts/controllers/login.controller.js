@@ -37,7 +37,7 @@ myApp.controller('LoginController', function ($http, $location, UserService) {
     if (vm.user.username === '' || vm.user.password === '') {
       vm.message = "Choose a username and password!";
     } else {
-      console.log('LoginController -- registerUser -- sending to server...', vm.user);
+      // console.log('LoginController -- registerUser -- sending to server...', vm.user);
       swal({
         text: "User created!  Please log in.",
         icon: "success",

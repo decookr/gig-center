@@ -25,7 +25,6 @@ body {
   background-size: 600px 300px, cover;
   background-attachment: fixed;
   background-repeat: repeat;
-
 }
 
  .table_style {
@@ -40,7 +39,6 @@ table {
   table-layout: auto;
   border-collapse: collapse;
   vertical-align: middle;
-
 }
 
 th, td {
@@ -60,8 +58,6 @@ h2 {
 
 .content {
   background-color: #c1e036;
-
-
 }
 
 .content-head {

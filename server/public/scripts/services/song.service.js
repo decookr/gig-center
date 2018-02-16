@@ -84,9 +84,7 @@ myApp.service('SongService', ['$http', '$location', '$mdToast', function ($http,
             url: '/songs/gig-song',
             data: songsToAdd
         }).then(function (response) {
-
             self.getSongs();
-
         });
     }
 

@@ -1,5 +1,4 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<!-- <md-content class="md-padding"> -->
 <div class="content" layout="column" layout-padding>
     <div flex layout-align="center" layout-padding style="background-color: #FBFBFF">
         <h2>Add Gig</h2>
@@ -76,45 +75,31 @@
                             <span ng-hide="gig.isEditable">{{gig.location}}</span>
                             <input ng-show="gig.isEditable" type="text" ng-model="gig.location" aria-label="New gig location">
                         </md-input-container>
-                        <!-- <span ng-hide="gig.isEditable">{{gig.location }}</span>
-                            <input ng-show="gig.isEditable" type="text" ng-model="gig.location"> -->
                     </td>
                     <td>
                         <md-input-container class="table_style">
                             <span ng-hide="gig.isEditable">{{gig.start_time}}</span>
                             <input ng-show="gig.isEditable" type="text" ng-model="gig.start_time" aria-label="New gig start time">
                         </md-input-container>
-                        <!-- <span ng-hide="gig.isEditable">{{gig.start_time | date : "h:mma"}}</span>
-                            <input ng-show="gig.isEditable" type="text" ng-model="gig.start_time"> -->
                     </td>
                     <td>
                         <md-input-container class="table_style">
                             <span ng-hide="gig.isEditable">{{gig.end_time}}</span>
                             <input ng-show="gig.isEditable" type="text" ng-model="gig.end_time" aria-label="New gig end time">
                         </md-input-container>
-                        <!-- <span ng-hide="gig.isEditable">{{gig.end_time | date : "h:mma"}}</span>
-                            <input ng-show="gig.isEditable" type="text" ng-model="gig.end_time"> -->
                     </td>
                     <td>
                         <md-input-container class="table_style">
                             <span ng-hide="gig.isEditable">{{gig.load_time}}</span>
                             <input ng-show="gig.isEditable" type="text" ng-model="gig.load_time" aria-label="New gig load-in time">
                         </md-input-container>
-                        <!-- <span ng-hide="gig.isEditable">{{gig.load_time | date : "h:mma"}}</span>
-                            <input ng-show="gig.isEditable" type="text" ng-model="gig.load_time"> -->
                     </td>
                     <td>
                         <md-input-container class="table_style">
                             <span ng-hide="gig.isEditable">{{gig.details}}</span>
                             <input ng-show="gig.isEditable" type="text" ng-model="gig.details" aria-label="New gig details">
                         </md-input-container>
-                        <!-- <span ng-hide="gig.isEditable">{{gig.details}}</span>
-                            <input ng-show="gig.isEditable" type="text" ng-model="gig.details"> -->
                     </td>
-                    <!-- <td>
-                            <span ng-hide="gig.isEditable">{{gig.gig_song_id}}</span>
-                            <input ng-show="gig.isEditable" type="text" ng-model="gig.gig_song_id">
-                        </td> -->
                     <td>
                         <md-button style="background-color:#c1e036;" class="md-fab md-mini">
                             <a class="no_underline_gigview" ng-href="#/gigs/{{gig.id}}">
@@ -133,7 +118,7 @@
                         <md-button style="background-color:#c1e036;" class="md-fab md-mini" ng-hide="gig.isEditable" ng-click="gig.isEditable = !gig.isEditable">
                             <i class="material-icons">mode_edit</i>
                         </md-button>
-                        <md-button style="background-color:#c1e036FFC15E;" class="md-fab md-mini" ng-show="gig.isEditable" ng-click="gc.editGig(gig)">
+                        <md-button style="background-color:#c1e036;" class="md-fab md-mini" ng-show="gig.isEditable" ng-click="gc.editGig(gig)">
                             <i class="material-icons">save</i>
                         </md-button>
                     </td>
@@ -148,4 +133,3 @@
     </div>
 </div>
 </div>
-<!-- </md-content> -->

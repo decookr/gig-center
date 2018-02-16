@@ -1,5 +1,4 @@
 <div ng-include="'views/partials/nav.html'"></div>
-<!-- <md-content class="md-padding"> -->
 <div class="content" layout="column" layout-padding>
     <div flex layout-align="center" layout-padding style="background-color: #FBFBFF">
         <h2>Add Song</h2>
@@ -27,8 +26,6 @@
                     <md-input-container>
                         <label>BPM</label>
                         <input ng-model="sc.songs.bpm">
-                        <!-- <div class="hint">###-##-####</div> -->
-                        <!-- <div ng-message="required">Name is required.</div> -->
                     </md-input-container>
                 </div>
                 <div flex>
@@ -117,7 +114,6 @@
                     <td ng-show="add.addToGig">
                         <md-checkbox id="{{song.id}}" ng-model="sc.songToAdd.song_id" ng-true-value="{{song.id}}" ng-change="sc.addSongsToGig(sc.songToAdd)"
                             ng-click="sc.showActionToast(song.title)" aria-label="Add song to setlist checkbox"></md-checkbox>
-                        <!-- <span ng-show="add.songAdded">Added!</span> -->
                     </td>
                     <td>
                         <md-button style="background-color:#c1e036;" class="md-fab md-mini" ng-hide="song.isEditable" ng-click="song.isEditable = !song.isEditable">
@@ -126,18 +122,14 @@
                         <md-button class="md-fab md-mini" ng-show="song.isEditable" ng-click="sc.editSong(song)">
                             <i class="material-icons">save</i>
                         </md-button>
-                        <!-- <md-button class="md-raised" ng-hide="song.isEditable" ng-click="song.isEditable = !song.isEditable">Edit</md-button>
-                        <md-button class="md-raised" ng-show="song.isEditable" ng-click="sc.editSong(song)">Save</md-button> -->
                     </td>
                     <td>
                         <md-button style="background-color:#c1e036;" class="md-fab md-mini" aria-label="Delete" ng-click="sc.deleteSong(song)">
                             <i class="material-icons">delete_forever</i>
                         </md-button>
-                        <!-- <md-button class="md-raised" ng-click="sc.deleteSong(song)">Delete</button> -->
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
-<!-- </md-content> -->

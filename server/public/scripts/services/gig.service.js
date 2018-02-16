@@ -24,7 +24,7 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
         });
     };
 
-    //add a gig
+    //add a gig with assigned users
     self.addGig = function (newGig, users) {
         console.log('users object', newGig);
         swal({
@@ -43,10 +43,7 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
                 newGig.end_time = '',
                 newGig.load_time = '',
                 newGig.gig_song_id = '',
-                newGig.details = '',
-            // console.log('gig id', id);
-            console.log('users id', users);
-            console.log(response.data.rows[0]);
+                newGig.details = '';
             var gigId = response.data.rows[0];
             $http({
                 method: 'POST',
@@ -56,42 +53,12 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
                     gigId
                 }
             }).then(function (response) {
-                console.log(response);
-                
                 self.getGigs();
                 users.users_id = false;
             });
-
         });
-
     }
 
-    // //assign users
-    // self.addGig = function (newGig) {
-    //     console.log('users array', newGig.users_id);
-    //     console.log('users object', newGig);
-
-
-    //     swal({
-    //         text: "Gig added!",
-    //         icon: "success",
-    //     });
-    //     $http({
-    //         method: 'POST',
-    //         url: '/gigs/',
-    //         data: newGig,
-    //     }).then(function (response) {
-    //         self.getGigs();
-    //         newGig.date = '',
-    //             newGig.location = '',
-    //             newGig.start_time = '',
-    //             newGig.end_time = '',
-    //             newGig.load_time = '',
-    //             newGig.gig_song_id = '',
-    //             newGig.details = '',
-    //             newGig.users_id = false;
-    //     });
-    // };
 
     //delete a gig
     self.deleteGig = function (gigToDelete) {
@@ -117,7 +84,6 @@ myApp.service('GigService', ['$http', '$location', function ($http, $location, G
                     swal("Gig not deleted");
                 }
             });
-
     };
 
     //edit all gig details

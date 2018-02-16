@@ -10,17 +10,4 @@ myApp.controller('GigController', ['GigService', 'UserService', '$mdDialog', fun
     vm.deleteGig = GigService.deleteGig;
     vm.editGig = GigService.editGig;
 
-
-    vm.showAlert = function(event) {
-        $mdDialog.show(
-            $mdDialog.alert()
-            .parent(angular.element(document.querySelector('#popupContainer')))
-            .title('Hi!!!')
-            .textContent('You can say other things')
-            .ariaLabel('Alert Dialog Demo')
-            .ok('Got it!')
-            .targetEvent(event)
-            
-        )
-    }
 }]);
